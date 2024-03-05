@@ -52,9 +52,13 @@
 
 ### Pembuatan branch baru
 
-buat branch dengan nama disesuaikan dengan kode ticket.
-jalankan `git branch kode_tikect main`
+buat branch dengan nama disesuaikan dengan kode ticket. jalankan:
+
+-   `git branch kode_ticket main`
+-   `git checkout kode_ticket`
 
 ### pull request
 
-dsafg
+buat pull request jika pekerjaan ticket sudah selesai dari branch kode ticket
+
+-   df
