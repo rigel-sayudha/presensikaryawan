@@ -6,12 +6,11 @@
 
 -   PHP 8.2
 -   livewire 3
--   intervention/image
--   spatie/laravel-permission
+-   pnpm
 
 ### Tahapan instalasi
 
--   Clone dari git
+-   Clone dari git : `git clone https://github.com/iqbalfarhan/absensimagang.git`
 -   copy file `.env` dari `.env.example`
 -   run : `composer install`
 -   run : `pnpm install`
@@ -44,8 +43,15 @@
 
 -   gunakan hashName() bawaan laravel
 
+### nama column database
+
+-   nama column database menggunakan bahasa inggris
+-   gunakan format snake case. contoh `ini_contoh_format_snake_case`
+-   foreignID gunakan format singular_id. contoh `customer_id` bukan `customers_id`
+
 ### File Model dan Controller
 
+-   gunakan nama datalam bahasa inggris
 -   gunakan pascal case contoh `TransaksiBatal`
 -   contoh pembuatan model : `php artisan make:model TransaksiBatal`
 -   contoh pembuatan controller : `php artisan make:controller TransaksiBatal`
@@ -59,17 +65,24 @@
 -   buat branch dengan nama disesuaikan dengan kode ticket
 -   run : `git branch kode_ticket main`
 -   run : `git checkout kode_ticket`
+-   misalkan nama ticket `FEWEB01 - Pembuatan base code aplikasi` maka gunakan `FEWEB01` sebagai nama branch
 
 ### Buat pull request
 
 -   buat pull request jika pekerjaan ticket sudah selesai dari branch kode ticket
--   Judul pull request disesuaikan dengan kode dan nama ticket
+-   Judul pull request disesuaikan dengan kode dan nama ticket lengkap. contohnya `FEWEB01 - Pembuatan base code aplikasi`
 -   wajib isi description
--   Assigness klik assign yourself
+-   Assigness klik assign your self
 -   Reviewers pilih iqbal
--   create pull request
+-   Klik create pull request
+-   lanjutkan pengerjaan ticket
 
 ### Selesai pull request
 
 -   bila ticket sudah selesai, ubah label pull requeste menjadi ready to merge
 -   setelah pull request di approve dan di merge, kembali buat branch untuk ticket selanjutnya
+
+### Copy Perubahan dari main
+
+-   run : `git origin origin main`
+-   run : `git merge origin/main`
