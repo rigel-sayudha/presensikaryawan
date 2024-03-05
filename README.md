@@ -40,11 +40,15 @@
 -   gunakan format kebab case. contoh `approve-absensi`
 -   contoh pembuatan: `php artisan make:livewire pages.absensi.approve-absensi`
 
+### File gambar
+
+-   gunakan hashName() bawaan laravel
+
 ### File Model dan Controller
 
 -   gunakan pascal case contoh `TransaksiBatal`
--   contoh pembuatan model: `php artisan make:model TransaksiBatal`
--   contoh pembuatan controller: `php artisan make:controller TransaksiBatal`
+-   contoh pembuatan model : `php artisan make:model TransaksiBatal`
+-   contoh pembuatan controller : `php artisan make:controller TransaksiBatal`
 
 ---
 
@@ -52,13 +56,20 @@
 
 ### Pembuatan branch baru
 
-buat branch dengan nama disesuaikan dengan kode ticket. jalankan:
+-   buat branch dengan nama disesuaikan dengan kode ticket
+-   run : `git branch kode_ticket main`
+-   run : `git checkout kode_ticket`
 
--   `git branch kode_ticket main`
--   `git checkout kode_ticket`
+### Buat pull request
 
-### pull request
+-   buat pull request jika pekerjaan ticket sudah selesai dari branch kode ticket
+-   Judul pull request disesuaikan dengan kode dan nama ticket
+-   wajib isi description
+-   Assigness klik assign yourself
+-   Reviewers pilih iqbal
+-   create pull request
 
-buat pull request jika pekerjaan ticket sudah selesai dari branch kode ticket
+### Selesai pull request
 
--   df
+-   bila ticket sudah selesai, ubah label pull requeste menjadi ready to merge
+-   setelah pull request di approve dan di merge, kembali buat branch untuk ticket selanjutnya
