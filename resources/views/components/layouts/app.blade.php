@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="light">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-theme="dark">
 
     <head>
         <meta charset="utf-8">
@@ -30,9 +30,9 @@
 
         @guest
             <div class="grid place-content-center h-screen bg-base-300">
-                <div class="mockup-code">
+                <div class="mockup-code bg-base-100 text-base-content">
                     <pre data-prefix="$"><code>Absensi magang</code></pre>
-                    <div class="card card-compact p-2 text-base-content w-full max-w-96">
+                    <div class="card card-compact p-2 w-full max-w-96">
                         {{ $slot }}
                     </div>
                 </div>
