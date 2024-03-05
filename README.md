@@ -84,5 +84,5 @@
 
 ### Copy Perubahan dari main
 
--   run : `git origin origin main`
+-   run : `git fetch origin main`
 -   run : `git merge origin/main`
