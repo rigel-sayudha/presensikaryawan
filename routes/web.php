@@ -20,8 +20,16 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function(){
     Route::get('/home', \App\Livewire\Pages\Home::class)->name('home');
     Route::get('/dashboard', \App\Livewire\Pages\Dashboard::class)->name('dashboard');
-    Route::get('/profile', \App\Livewire\Pages\Home::class)->name('profile');
+    Route::get('/profile', \App\Livewire\Pages\Profile::class)->name('profile');
     Route::get('/dokumentasi', \App\Livewire\Pages\Dokumentasi::class)->name('dokumentasi');
+
+    Route::get('/attendance', \App\Livewire\Pages\Attendance\Index::class)->name('attendance.index');
+    Route::get('/attendance/mine', \App\Livewire\Pages\Attendance\Mine::class)->name('attendance.mine');
+
+    Route::get('/user', \App\Livewire\Pages\User\Index::class)->name('user.index');
+
+    Route::get('/setting/registration-code', \App\Livewire\Pages\Setting\RegistrationCode::class)->name('setting.registration-code');
+    Route::get('/role', \App\Livewire\Pages\Role\Index::class)->name('role.index');
 });
 
 Route::middleware('guest')->group(function(){
