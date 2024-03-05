@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/user', \App\Livewire\Pages\User\Index::class)->name('user.index');
 
     Route::get('/setting/registration-code', \App\Livewire\Pages\Setting\RegistrationCode::class)->name('setting.registration-code');
-    Route::get('/role/index', \App\Livewire\Pages\Role\Index::class)->name('role.index');
+    Route::get('/role', \App\Livewire\Pages\Role\Index::class)->name('role.index');
 });
 
 Route::middleware('guest')->group(function(){

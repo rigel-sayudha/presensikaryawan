@@ -7,11 +7,12 @@
 -   PHP 8.2
 -   livewire 3
 -   pnpm
+-   database MySQL
 
 ### Tahapan instalasi
 
 -   Clone dari git
--   copy file `.env` dari `.env.example`
+-   buat file `.env` dari `.env.example`
 -   run : `composer install`
 -   run : `pnpm install`
 -   run : `php artisan key:generate`
@@ -27,7 +28,7 @@
 
 ---
 
-## Penamaan
+## Format pemberian nama file dan lainnya
 
 ### Variable dan function
 
@@ -41,20 +42,19 @@
 
 ### File gambar
 
--   gunakan hashName() bawaan laravel
+-   gunakan hashName() bawaan laravel. contoh di `app\Livewire\Form\UserForm.php` dan profile.php
 
-### nama column database
+### Nama column database
 
 -   nama column database menggunakan bahasa inggris
 -   gunakan format snake case. contoh `ini_contoh_format_snake_case`
 -   foreignID gunakan format singular_id. contoh `customer_id` bukan `customers_id`
 
-### File Model dan Controller
+### File Model
 
 -   gunakan nama datalam bahasa inggris
 -   gunakan pascal case contoh `TransaksiBatal`
 -   contoh pembuatan model : `php artisan make:model TransaksiBatal`
--   contoh pembuatan controller : `php artisan make:controller TransaksiBatal`
 
 ---
 
@@ -79,7 +79,8 @@
 
 ### Selesai pull request
 
--   bila ticket sudah selesai, ubah label pull request menjadi ready to merge
+-   bila ticket sudah selesai, ubah label pull request menjadi `ready to merge`
+-   bila belum selesai gunakan label `draft`
 -   beritahu reviewer untuk review dan merge pull request
 -   **jangan merge pull request ticket sendiri**
 -   setelah pull request di approve dan di merge, kembali buat branch untuk ticket selanjutnya
