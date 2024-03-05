@@ -73,16 +73,17 @@
 -   Judul pull request disesuaikan dengan kode dan nama ticket lengkap. contohnya `FEWEB01 - Pembuatan base code aplikasi`
 -   wajib isi description
 -   Assigness klik assign your self
--   Reviewers pilih iqbal
+-   Reviewers pilih iqbalfarhan
 -   Klik create pull request
 -   lanjutkan pengerjaan ticket
 
 ### Selesai pull request
 
--   bila ticket sudah selesai, ubah label pull requeste menjadi ready to merge
+-   bila ticket sudah selesai, ubah label pull request menjadi ready to merge
+-   beritahu reviewer untuk review dan merge pull request
 -   setelah pull request di approve dan di merge, kembali buat branch untuk ticket selanjutnya
 
-### Copy Perubahan dari main
+### Merge Perubahan dari main
 
 -   run : `git fetch origin main`
 -   run : `git merge origin/main`
