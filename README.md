@@ -10,7 +10,7 @@
 
 ### Tahapan instalasi
 
--   Clone dari git : `git clone https://github.com/iqbalfarhan/absensimagang.git`
+-   Clone dari git
 -   copy file `.env` dari `.env.example`
 -   run : `composer install`
 -   run : `pnpm install`
