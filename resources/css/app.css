@@ -36,10 +36,10 @@
 
     .table-wrapper {
         @apply border-2 border-base-300 rounded-xl;
+    }
 
-        thead {
-            @apply border-b-2 border-base-300;
-        }
+    thead {
+        @apply border-b-2 border-base-300;
     }
 
     .input-bordered {
