@@ -81,6 +81,7 @@
 
 -   bila ticket sudah selesai, ubah label pull request menjadi ready to merge
 -   beritahu reviewer untuk review dan merge pull request
+-   **jangan merge pull request ticket sendiri**
 -   setelah pull request di approve dan di merge, kembali buat branch untuk ticket selanjutnya
 
 ### Merge Perubahan dari main
