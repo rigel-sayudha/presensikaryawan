@@ -35,14 +35,15 @@
     }
 
     .table-wrapper {
-        @apply border-2 border-base-300 rounded-xl bg-base-100;
+        @apply border-2 border-base-300 rounded-xl bg-base-100 overflow-x-auto whitespace-nowrap;
     }
 
     thead {
         @apply border-b-2 border-base-300;
     }
 
-    .input-bordered {
+    .input-bordered,
+    .select-bordered {
         @apply border-2;
     }
 

@@ -1,7 +1,7 @@
 <div class="space-y-6">
     <div class="flex items-center justify-between">
         <input type="search" class="input input-bordered" placeholder="Pencarian" wire:model.live="cari">
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" wire:click="$dispatch('createUser')">
             <x-tabler-circle-plus class="icon-5" />
             <span>Tambah user</span>
         </button>
@@ -19,16 +19,21 @@
             <tbody>
                 @foreach ($datas as $data)
                     <tr>
-                        <td>{{ $data->id }}</td>
+                        <td>{{ $no++ }}</td>
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->email }}</td>
                         <td>{{ $data->getRoleNames()->first() }}</td>
                         <td>
                             <div class="flex gap-1 justify-center">
-                                <button class="btn btn-xs btn-square input-bordered">
+                                <a href="{{ route('user.show', $data) }}" class="btn btn-xs btn-square input-bordered">
+                                    <x-tabler-folder class="icon-4" />
+                                </a>
+                                <button class="btn btn-xs btn-square input-bordered"
+                                    wire:click="$dispatch('updateUser', {user:{{ $data->id }}})">
                                     <x-tabler-edit class="icon-4" />
                                 </button>
-                                <button class="btn btn-xs btn-square input-bordered">
+                                <button class="btn btn-xs btn-square input-bordered"
+                                    wire:click="$dispatch('deleteUser', {user:{{ $data->id }}})">
                                     <x-tabler-trash class="icon-4" />
                                 </button>
                             </div>
@@ -39,4 +44,5 @@
         </table>
     </div>
 
+    @livewire('pages.user.actions')
 </div>

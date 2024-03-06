@@ -8,6 +8,9 @@ use Livewire\Component;
 class Index extends Component
 {
     public $cari;
+    public $no = 1;
+
+    protected $listeners = ['reload' => '$refresh'];
 
     public function render()
     {

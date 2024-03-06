@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/attendance/mine', \App\Livewire\Pages\Attendance\Mine::class)->name('attendance.mine');
 
     Route::get('/user', \App\Livewire\Pages\User\Index::class)->name('user.index');
+    Route::get('/user/{user}', \App\Livewire\Pages\User\Show::class)->name('user.show');
 
     Route::get('/setting/registration-code', \App\Livewire\Pages\Setting\RegistrationCode::class)->name('setting.registration-code');
     Route::get('/role', \App\Livewire\Pages\Role\Index::class)->name('role.index');

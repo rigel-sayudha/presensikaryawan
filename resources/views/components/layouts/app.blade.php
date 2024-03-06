@@ -10,11 +10,11 @@
         @vite('resources/css/app.css')
     </head>
 
-    <body>
+    <body class="bg-base-200">
         @auth
-            <div class="drawer lg:drawer-open">
+            <div class="drawer lg:drawer-open min-h-screen">
                 <input id="drawer" type="checkbox" class="drawer-toggle" />
-                <div class="drawer-content bg-base-200">
+                <div class="drawer-content">
                     @livewire('partial.navbar')
                     <div class="max-w-6xl mx-auto p-6">
                         {{ $slot }}
