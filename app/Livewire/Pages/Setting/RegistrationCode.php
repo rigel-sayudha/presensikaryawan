@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages\Setting;
 
+use App\Models\Setting;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
@@ -14,10 +15,20 @@ class RegistrationCode extends Component
             Str::substr(str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 3),
             rand(100, 999)
         ]);
+
+        $this->simpan();
     }
 
     public function mount(){
-        $this->generateKode();
+        $this->kode = Setting::where('name', 'registration_code')->first()->value ?? "...";
+    }
+
+    public function simpan(){
+        Setting::updateOrCreate([
+            'name' => 'registration_code',
+        ],[
+            'value' => $this->kode
+        ]);
     }
 
     public function render()
