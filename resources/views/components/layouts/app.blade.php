@@ -14,7 +14,7 @@
         @auth
             <div class="drawer lg:drawer-open">
                 <input id="drawer" type="checkbox" class="drawer-toggle" />
-                <div class="drawer-content">
+                <div class="drawer-content bg-base-200">
                     @livewire('partial.navbar')
                     <div class="max-w-6xl mx-auto p-6">
                         {{ $slot }}
