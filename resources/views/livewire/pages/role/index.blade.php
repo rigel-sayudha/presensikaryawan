@@ -18,7 +18,7 @@
             </thead>
             <tbody>
                 @foreach ($permissions as $permit)
-                    <tr>
+                    <tr wire:key="{{ $permit->id }}">
                         <td>{{ $no++ }}</td>
                         <td>{{ $permit->name }}</td>
                         @foreach ($roles as $role)
@@ -32,7 +32,8 @@
                                     wire:click="$dispatch('editPermission', {permission: {{ $permit->id }}})">
                                     <x-tabler-edit class="icon-4" />
                                 </button>
-                                <button class="btn input-bordered btn-xs btn-square">
+                                <button class="btn input-bordered btn-xs btn-square"
+                                    wire:click="deletePermission({{ $permit->id }})">
                                     <x-tabler-trash class="icon-4" />
                                 </button>
                             </div>

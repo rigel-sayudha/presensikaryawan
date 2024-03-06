@@ -71,8 +71,6 @@ class UserForm extends Form
             $valid['password'] = Hash::make($this->password);
         }
 
-        // dd($valid);
-
         $this->user->update($valid);
 
         $this->reset();

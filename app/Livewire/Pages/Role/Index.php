@@ -17,10 +17,14 @@ class Index extends Component
         $permission->assignRole($role);
     }
 
+    public function deletePermission(Permission $permission){
+        $permission->delete();
+    }
+
     public function render()
     {
         return view('livewire.pages.role.index', [
-            'roles' => Role::get(),
+            'roles' => Role::whereNot('name', 'superadmin')->get(),
             'permissions' => Permission::when($this->cari, function($q){
                 $q->where('name', 'like', "%{$this->cari}%");
             })->get(),
