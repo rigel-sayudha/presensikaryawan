@@ -23,7 +23,7 @@
 
 -   run : `php artisan serve`
 -   run : `pnpm dev`
--   buka https://127.0.0.1:8000 di browser (sesuaikan port)
+-   buka `http://127.0.0.1:8000` di browser (sesuaikan port)
 -   login dengan email `admin@absensimagang.com` dan password `admin123`
 
 ---
@@ -83,6 +83,7 @@
 -   bila belum selesai gunakan label `draft`
 -   beritahu reviewer untuk review dan merge pull request
 -   **jangan merge pull request ticket sendiri**
+-   sync ulang update git
 -   setelah pull request di approve dan di merge, kembali buat branch untuk ticket selanjutnya
 
 ### Merge Perubahan dari main
