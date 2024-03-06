@@ -9,6 +9,8 @@ class Show extends Component
 {
     public User $user;
 
+    protected $listeners = ['reload' => '$refresh'];
+
     public function mount(User $user){
         $this->user = $user;
     }

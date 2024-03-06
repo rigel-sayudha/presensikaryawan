@@ -8,14 +8,8 @@
         <a class="btn btn-ghost text-xl">{{ config('app.name') }}</a>
     </div>
     <div class="navbar-end">
-        <button class="btn btn-ghost btn-circle">
-            <x-tabler-search class="icon-5" />
-        </button>
-        <button class="btn btn-ghost btn-circle">
-            <div class="indicator">
-                <x-tabler-bell class="icon-5" />
-                <span class="badge badge-xs badge-primary indicator-item"></span>
-            </div>
-        </button>
+        <a href="{{ route('dokumentasi') }}" class="btn btn-ghost btn-circle">
+            <x-tabler-book class="icon-5" />
+        </a>
     </div>
 </div>

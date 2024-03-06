@@ -20,7 +20,16 @@
                 @foreach ($datas as $data)
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td>{{ $data->name }}</td>
+                        <td>
+                            <div class="flex gap-2 items-center">
+                                <div class="avatar">
+                                    <div class="w-5 rounded-full">
+                                        <img src="{{ $data->avatar }}" alt="">
+                                    </div>
+                                </div>
+                                <span>{{ $data->name }}</span>
+                            </div>
+                        </td>
                         <td>{{ $data->email }}</td>
                         <td>{{ $data->getRoleNames()->first() }}</td>
                         <td>

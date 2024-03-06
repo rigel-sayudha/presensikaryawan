@@ -83,8 +83,8 @@
 -   bila belum selesai gunakan label `draft`
 -   beritahu reviewer untuk review dan merge pull request
 -   **jangan merge pull request ticket sendiri**
--   sync ulang update git
 -   setelah pull request di approve dan di merge, kembali buat branch untuk ticket selanjutnya
+-   lakukan merge perubahan main setelah buat branch baru
 
 ### Merge Perubahan dari main
 

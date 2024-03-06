@@ -30,10 +30,6 @@
         @apply h-10 w-10;
     }
 
-    .active {
-        @apply font-bold;
-    }
-
     .table-wrapper {
         @apply border-2 border-base-300 rounded-xl bg-base-100 overflow-x-auto whitespace-nowrap;
     }
