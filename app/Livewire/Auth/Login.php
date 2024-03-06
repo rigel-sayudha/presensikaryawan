@@ -7,8 +7,8 @@ use Livewire\Component;
 
 class Login extends Component
 {
-    public $email = "admin@absensimagang.com";
-    public $password = "admin123";
+    public $email;
+    public $password;
 
     public function login(){
         $valid = $this->validate([
