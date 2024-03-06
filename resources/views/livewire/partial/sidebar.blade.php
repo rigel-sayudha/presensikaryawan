@@ -32,7 +32,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('user.index') }}" @class(['active' => Route::is('user.index')]) wire:navigate>
+                <a href="{{ route('user.index') }}" @class(['active' => Route::is(['user.index', 'user.show'])]) wire:navigate>
                     <x-tabler-users class="icon-5" />
                     <span>User management</span>
                 </a>

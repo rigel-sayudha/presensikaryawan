@@ -19,6 +19,7 @@ class UserForm extends Form
     public $nis;
     public $phone;
     public $photo;
+    public $role;
 
     public function setUser(User $user){
         $this->user = $user;
@@ -28,6 +29,8 @@ class UserForm extends Form
         $this->school = $user->school;
         $this->nis = $user->nis;
         $this->phone = $user->phone;
+
+        $this->role = $user->getRoleNames()->first();
     }
 
     public function store(){
@@ -38,6 +41,7 @@ class UserForm extends Form
             'school' => 'required',
             'nis' => 'required',
             'phone' => 'required',
+            'role' => 'required',
         ]);
 
         if ($this->photo) {
@@ -46,7 +50,8 @@ class UserForm extends Form
             $valid['photo'] = $filename;
         }
 
-        User::create($valid);
+        $user = User::create($valid);
+        $user->assignRole($this->role);
 
         $this->reset();
     }
@@ -59,6 +64,7 @@ class UserForm extends Form
             'school' => 'required',
             'nis' => 'required',
             'phone' => 'required',
+            'role' => 'required',
         ]);
 
         if ($this->photo) {
@@ -72,6 +78,7 @@ class UserForm extends Form
         }
 
         $this->user->update($valid);
+        $this->user->syncRoles($this->role);
 
         $this->reset();
     }
