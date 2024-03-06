@@ -10,10 +10,10 @@ use Livewire\Component;
 
 class Register extends Component
 {
-    public $name = 'Iqbal Farhan Syuhada';
-    public $email = 'iqbalfarhan1996@gmail.com';
-    public $password = "adminoke";
-    public $kodeRegistrasi = "ZWC338";
+    public $name;
+    public $email;
+    public $password;
+    public $kodeRegistrasi;
     public $validKodeRegistrasi;
 
     public function register(){
