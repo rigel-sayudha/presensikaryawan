@@ -29,12 +29,17 @@
         @endauth
 
         @guest
-            <div class="grid place-content-center h-screen bg-base-300">
-                <div class="mockup-code bg-base-100 text-base-content">
-                    <pre data-prefix="$"><code>Absensi magang</code></pre>
-                    <div class="card card-compact p-2 w-full max-w-96">
+            <div class="flex items-center justify-center h-screen bg-base-300">
+                <div class="card card-compact w-full max-w-sm bg-base-100 mockup-code text-base-content space-y-4">
+                    <pre data-prefix="#"><code>{{ config('app.name') }}</code></pre>
+                    <div class="p-2">
                         {{ $slot }}
                     </div>
+                    @if (Route::is('login'))
+                        <pre data-prefix="#"><code>Belum punya akun? <a href="{{ route('register') }}">Daftar</a></code></pre>
+                    @elseif (Route::is('register'))
+                        <pre data-prefix="#"><code>Sudah punya akun? <a href="{{ route('login') }}">Login</a></code></pre>
+                    @endif
                 </div>
             </div>
         @endguest
