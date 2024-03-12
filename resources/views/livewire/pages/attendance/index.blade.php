@@ -1,6 +1,6 @@
 <div class="space-y-6">
     <div class="flex justify-between">
-        <input type="text" class="input input-bordered" placeholder="Pencarian" />
+        <input type="text" class="input input-bordered" wire:model.live="search" placeholder="Pencarian" />
         <input type="date" class="input input-bordered" wire:model.live="date" />
     </div>
     <div class="table-wrapper">
@@ -15,7 +15,7 @@
                 <th class="text-center">Action</th>
             </thead>
             <tbody>
-                @foreach ($datas as $data)
+                @forelse ($datas as $data)
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $data->user->name }}</td>
@@ -43,7 +43,13 @@
                             </div>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="100%">
+                            @livewire('partial.nocontent')
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

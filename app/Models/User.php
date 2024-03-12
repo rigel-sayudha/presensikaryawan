@@ -59,4 +59,8 @@ class User extends Authenticatable
     public function getAvatarAttribute(){
         return $this->photo ? Storage::url($this->photo) : url('nouser.jpg');
     }
+
+    public function attendances(){
+        return $this->hasMany(Attendance::class);
+    }
 }

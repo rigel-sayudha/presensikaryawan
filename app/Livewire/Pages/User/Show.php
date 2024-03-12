@@ -7,6 +7,7 @@ use Livewire\Component;
 
 class Show extends Component
 {
+    public $no = 1;
     public User $user;
 
     protected $listeners = ['reload' => '$refresh'];
