@@ -17,7 +17,7 @@
                 <th class="text-center">Actions</th>
             </thead>
             <tbody>
-                @foreach ($datas as $data)
+                @forelse ($datas as $data)
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>
@@ -34,7 +34,8 @@
                         <td>{{ $data->getRoleNames()->first() }}</td>
                         <td>
                             <div class="flex gap-1 justify-center">
-                                <a href="{{ route('user.show', $data) }}" class="btn btn-xs btn-square input-bordered">
+                                <a href="{{ route('user.show', $data) }}" class="btn btn-xs btn-square input-bordered"
+                                    wire:navigate>
                                     <x-tabler-folder class="icon-4" />
                                 </a>
                                 <button class="btn btn-xs btn-square input-bordered"
@@ -48,7 +49,13 @@
                             </div>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="100%">
+                            @livewire('partial.nocontent')
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

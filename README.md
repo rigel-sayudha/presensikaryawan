@@ -66,6 +66,7 @@
 -   run : `git branch kode_ticket main`
 -   run : `git checkout kode_ticket`
 -   misalkan nama ticket `FEWEB01 - Pembuatan base code aplikasi` maka gunakan `FEWEB01` sebagai nama branch
+-   kemudian merge perubahan dari main (paling bawah)
 
 ### Buat pull request
 

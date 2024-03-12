@@ -38,6 +38,10 @@
         @apply border-b-2 border-base-300;
     }
 
+    .table td {
+        @apply align-top;
+    }
+
     .input-bordered,
     .select-bordered {
         @apply border-2;

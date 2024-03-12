@@ -17,4 +17,15 @@ class Attendance extends Model
         'note',
         'approved',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function getRangeTimeAttribute(){
+        return implode(' - ', [
+            date('H:i', strtotime($this->in)),
+            date('H:i', strtotime($this->out)),
+        ]);
+    }
 }

@@ -17,7 +17,7 @@
                 <th class="text-center">Action</th>
             </thead>
             <tbody>
-                @foreach ($permissions as $permit)
+                @forelse ($permissions as $permit)
                     <tr wire:key="{{ $permit->id }}">
                         <td>{{ $no++ }}</td>
                         <td>{{ $permit->name }}</td>
@@ -39,7 +39,13 @@
                             </div>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr>
+                        <td colspan="100%">
+                            @livewire('partial.nocontent')
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
