@@ -29,13 +29,15 @@
                         </td>
                         <td>
                             <div class="flex gap-1 justify-center">
-                                <button class="btn btn-xs btn-square input-bordered">
+                                <button class="btn btn-xs btn-square input-bordered"
+                                    wire:click="$dispatch('showAttendance', {attendance : {{ $data->id }}})">
                                     <x-tabler-message class="icon-4" />
                                 </button>
                                 <button class="btn btn-xs btn-square input-bordered">
                                     <x-tabler-edit class="icon-4" />
                                 </button>
-                                <button class="btn btn-xs btn-square input-bordered">
+                                <button class="btn btn-xs btn-square input-bordered"
+                                    wire:click="$dispatch('deleteAttendance', {attendance : {{ $data->id }}})">
                                     <x-tabler-trash class="icon-4" />
                                 </button>
                             </div>
@@ -46,5 +48,6 @@
         </table>
     </div>
 
+    @livewire('pages.attendance.show')
     @livewire('pages.attendance.actions')
 </div>
