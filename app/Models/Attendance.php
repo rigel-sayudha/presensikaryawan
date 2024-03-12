@@ -17,4 +17,8 @@ class Attendance extends Model
         'note',
         'approved',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
