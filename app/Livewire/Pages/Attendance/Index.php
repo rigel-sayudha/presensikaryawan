@@ -8,6 +8,7 @@ use Livewire\Component;
 class Index extends Component
 {
     public $no = 1;
+    public $date;
 
     protected $listeners = ['reload' => '$refresh'];
 
@@ -22,7 +23,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.pages.attendance.index', [
-            'datas' => Attendance::orderBy('date')->get()
+            'datas' => Attendance::when($this->date, fn($q) => $q->where('date', $this->date))->orderBy('date')->get()
         ]);
     }
 }

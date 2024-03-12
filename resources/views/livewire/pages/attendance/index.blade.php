@@ -1,8 +1,7 @@
 <div class="space-y-6">
     <div class="flex justify-between">
-        <input type="text" class="input input-bordered" placeholder="Pencarian">
-        <input type="month" class="input input-bordered">
-        <input type="date" class="input input-bordered">
+        <input type="text" class="input input-bordered" placeholder="Pencarian" />
+        <input type="date" class="input input-bordered" wire:model.live="date" />
     </div>
     <div class="table-wrapper">
         <table class="table">
@@ -33,7 +32,8 @@
                                     wire:click="$dispatch('showAttendance', {attendance : {{ $data->id }}})">
                                     <x-tabler-message class="icon-4" />
                                 </button>
-                                <button class="btn btn-xs btn-square input-bordered">
+                                <button class="btn btn-xs btn-square input-bordered"
+                                    wire:click="$dispatch('editAttendance', {attendance : {{ $data->id }}})">
                                     <x-tabler-edit class="icon-4" />
                                 </button>
                                 <button class="btn btn-xs btn-square input-bordered"
