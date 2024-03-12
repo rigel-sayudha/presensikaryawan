@@ -2,6 +2,7 @@
     <div class="flex justify-between">
         <input type="text" class="input input-bordered" placeholder="Pencarian">
         <input type="month" class="input input-bordered">
+        <input type="date" class="input input-bordered">
     </div>
     <div class="table-wrapper">
         <table class="table">
@@ -11,16 +12,21 @@
                 <th>Tanggal</th>
                 <th>Masuk</th>
                 <th>Keluar</th>
+                <th>Approved</th>
                 <th class="text-center">Action</th>
             </thead>
             <tbody>
                 @foreach ($datas as $data)
                     <tr>
-                        <td>{{ $data->id }}</td>
+                        <td>{{ $no++ }}</td>
                         <td>{{ $data->user->name }}</td>
-                        <td>{{ date('d F Y', strtotime($data->date)) }}</td>
+                        <td class="font-mono">{{ date('d M Y', strtotime($data->date)) }}</td>
                         <td class="font-mono">{{ date('H:i', strtotime($data->in)) }}</td>
                         <td class="font-mono">{{ date('H:i', strtotime($data->out)) }}</td>
+                        <td>
+                            <input type="checkbox" class="toggle toggle-primary toggle-xs" @checked($data->approved)
+                                wire:change="approveAttendance({{ $data->id }})">
+                        </td>
                         <td>
                             <div class="flex gap-1 justify-center">
                                 <button class="btn btn-xs btn-square input-bordered">
@@ -39,4 +45,6 @@
             </tbody>
         </table>
     </div>
+
+    @livewire('pages.attendance.actions')
 </div>
