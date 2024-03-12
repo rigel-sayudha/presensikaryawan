@@ -18,7 +18,11 @@
                 @forelse ($datas as $data)
                     <tr>
                         <td>{{ $no++ }}</td>
-                        <td>{{ $data->user->name }}</td>
+                        <td>
+                            <a href="{{ route('user.show', $data->user_id) }}">
+                                {{ $data->user->name }}
+                            </a>
+                        </td>
                         <td class="font-mono">{{ date('d M Y', strtotime($data->date)) }}</td>
                         <td class="font-mono">{{ date('H:i', strtotime($data->in)) }}</td>
                         <td class="font-mono">{{ date('H:i', strtotime($data->out)) }}</td>
