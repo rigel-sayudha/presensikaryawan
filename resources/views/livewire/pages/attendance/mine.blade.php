@@ -5,6 +5,7 @@
    
             <input type="date" class="form-control" wire:model="searchDate" placeholder="Cari">
         </div>
+        <div class="table-wrapper">
         <table class="table">
             <thead>
                 <tr>
@@ -28,5 +29,7 @@
                 @endforeach
             </tbody>
         </table>
+        </div>
     </div>
 </div>
+
