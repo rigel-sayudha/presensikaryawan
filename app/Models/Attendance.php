@@ -28,4 +28,10 @@ class Attendance extends Model
             date('H:i', strtotime($this->out)),
         ]);
     }
+    
+    protected $casts = [
+        'date' => 'date',
+        'in' => 'datetime',
+        'out' => 'datetime',
+    ];
 }
