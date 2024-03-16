@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Attendance extends Model
 {
@@ -27,5 +28,21 @@ class Attendance extends Model
             date('H:i', strtotime($this->in)),
             date('H:i', strtotime($this->out)),
         ]);
+    }
+
+    public function getStatusTextAttribute(){
+        if ($this->out == null) {
+            return "Absensi keluar";
+        }
+        else {
+            return "Absensi selesai";
+        }
+    }
+
+    public function getDurationAttribute(){
+        $waktuMulaiObj = Carbon::parse($this->in);
+        $waktuSelesaiObj = Carbon::parse($this->out);
+        $durasi = $waktuMulaiObj->diff($waktuSelesaiObj);
+        return $durasi->format('%H jam %I menit');
     }
 }

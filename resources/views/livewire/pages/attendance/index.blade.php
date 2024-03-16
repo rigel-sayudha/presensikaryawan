@@ -25,7 +25,11 @@
                         </td>
                         <td class="font-mono">{{ date('d M Y', strtotime($data->date)) }}</td>
                         <td class="font-mono">{{ date('H:i', strtotime($data->in)) }}</td>
-                        <td class="font-mono">{{ date('H:i', strtotime($data->out)) }}</td>
+                        <td class="font-mono">
+                            @if ($data->out)
+                                {{ date('H:i', strtotime($data->out)) }}
+                            @endif
+                        </td>
                         <td>
                             <input type="checkbox" class="toggle toggle-primary toggle-xs" @checked($data->approved)
                                 wire:change="approveAttendance({{ $data->id }})">
