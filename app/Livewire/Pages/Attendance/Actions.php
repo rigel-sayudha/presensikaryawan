@@ -31,9 +31,10 @@ class Actions extends Component
         $this->attendance = null;
     }
 
-    public function simpan(){
+    public function simpan()
+    {
         if (isset($this->attendance)) {
-            $this->form->update();
+            $this->form->store();
         }
         $this->dispatch('reload');
         $this->resetAttendance();

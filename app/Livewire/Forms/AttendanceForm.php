@@ -10,8 +10,8 @@ class AttendanceForm extends Form
 {
     public $date = "";
     public $user_id = "";
-    public $in = "08:00";
-    public $out = "17:00";
+    public $in = "";
+    public $out = null;
     public $note = "";
     public $approved = false;
 
@@ -22,40 +22,31 @@ class AttendanceForm extends Form
 
         $this->date = $attendance->date;
         $this->user_id = $attendance->user_id;
-        $this->in = $attendance->in;
-        $this->out = $attendance->out;
+        $this->in = date('H:i', strtotime($attendance->in));
+        $this->out = $attendance->out ? date('H:i', strtotime($attendance->out)) : null;
         $this->note = $attendance->note;
         $this->approved = $attendance->approved;
     }
 
     public function store(){
-        $valid = $this->validate([
+        $this->validate([
             'date' => 'required',
             'user_id' => 'required',
             'in' => 'required',
-            'approved' => 'required',
+            'out' => '',
+            'note' => '',
+            'approved' => '',
         ]);
 
-        Attendance::create($valid);
-        $this->reset();
-    }
-
-    public function update(){
-        $valid = $this->validate([
-            'date' => 'required',
-            'user_id' => 'required',
-            'in' => 'required',
-            'approved' => 'required',
+        Attendance::updateOrCreate([
+            'date' => $this->date,
+            'user_id' => $this->user_id,
+        ], [
+            'in' => $this->in,
+            'out' => $this->out,
+            'note' => $this->note,
+            'approved' => $this->approved,
         ]);
-
-        if ($this->out) {
-            $valid['out'] = $this->out;
-        }
-        if ($this->note) {
-            $valid['note'] = $this->note;
-        }
-
-        $this->attendance->update($valid);
         $this->reset();
     }
 }

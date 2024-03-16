@@ -29,7 +29,7 @@
                         <div class="label">
                             <span class="label-text">Jam masuk</span>
                         </div>
-                        <input type="text" placeholder="Type here"
+                        <input type="time" placeholder="Type here"
                             class="input input-bordered @error('form.in') select-error @enderror"
                             wire:model="form.in" />
                     </label>
@@ -37,7 +37,7 @@
                         <div class="label">
                             <span class="label-text">Jam keluar</span>
                         </div>
-                        <input type="text" placeholder="Type here"
+                        <input type="time" placeholder="Type here"
                             class="input input-bordered @error('form.out') select-error @enderror"
                             wire:model="form.out" />
                     </label>

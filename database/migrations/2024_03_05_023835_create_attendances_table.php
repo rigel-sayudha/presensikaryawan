@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->time('in');
             $table->time('out')->nullable();
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->boolean('approved')->default(false);
             $table->timestamps();
         });
