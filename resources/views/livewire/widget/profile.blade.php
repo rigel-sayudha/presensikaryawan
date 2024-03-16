@@ -1,9 +1,9 @@
 <a href="{{ route('profile') }}" class="card card-compact bg-base-100 border-2" wire:navigate>
     <div class="card-body">
-        <div class="flex flex-row items-center gap-3">
+        <div class="flex flex-row items-center gap-3  h-full">
             <div>
                 <div class="avatar">
-                    <div class="w-10 bg-base-300 rounded-full">
+                    <div class="w-12 bg-base-300 rounded-full">
                         <img src="{{ $user->avatar }}" alt="">
                     </div>
                 </div>

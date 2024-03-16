@@ -10,6 +10,7 @@ class Index extends Component
     public $no = 1;
     public $date;
     public $search;
+    public $withActions = true;
 
     protected $listeners = ['reload' => '$refresh'];
 

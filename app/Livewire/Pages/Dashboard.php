@@ -11,18 +11,8 @@ class Dashboard extends Component
 
     protected $listeners = ['reload' => '$refresh'];
 
-    public function approveAttendance(Attendance $attendance)
-    {
-        $newStatus = $attendance->approved;
-        $attendance->update([
-            'approved' => !$newStatus
-        ]);
-    }
-
     public function render()
     {
-        return view('livewire.pages.dashboard', [
-            'datas' => Attendance::where('date', date('Y-m-d'))->where('approved', false)->get()
-        ]);
+        return view('livewire.pages.dashboard');
     }
 }

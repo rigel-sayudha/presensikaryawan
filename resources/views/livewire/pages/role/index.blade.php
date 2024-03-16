@@ -22,9 +22,11 @@
                         <td>{{ $no++ }}</td>
                         <td>{{ $permit->name }}</td>
                         @foreach ($roles as $role)
-                            <td class="text-center"><input type="checkbox" class="toggle toggle-sm"
+                            <td class="text-center">
+                                <input type="checkbox" class="toggle toggle-primary toggle-sm"
                                     @checked($permit->hasRole($role->name))
-                                    wire:change="applyPermission({{ $permit->id }}, '{{ $role->name }}')" /></td>
+                                    wire:change="applyPermission({{ $permit->id }}, '{{ $role->name }}')" />
+                            </td>
                         @endforeach
                         <td>
                             <div class="flex gap-1 justify-center">

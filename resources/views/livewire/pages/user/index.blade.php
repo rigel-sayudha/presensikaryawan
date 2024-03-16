@@ -34,7 +34,7 @@
                         <td>{{ $data->email }}</td>
                         <td>{{ $data->getRoleNames()->first() }}</td>
                         <td>
-                            <input type="checkbox" class="toggle toggle-primary toggle-xs" @checked($data->active)
+                            <input type="checkbox" class="toggle toggle-primary toggle-sm" @checked($data->active)
                                 wire:change="$dispatch('toggleActiveUser', {user : {{ $data->id }}})">
                         </td>
                         <td>
