@@ -13,14 +13,6 @@ class Index extends Component
 
     protected $listeners = ['reload' => '$refresh'];
 
-    public function approveAttendance(Attendance $attendance)
-    {
-        $newStatus = $attendance->approved;
-        $attendance->update([
-            'approved' => !$newStatus
-        ]);
-    }
-
     public function render()
     {
         return view('livewire.pages.attendance.index', [

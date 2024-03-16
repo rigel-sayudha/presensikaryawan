@@ -27,6 +27,7 @@ class User extends Authenticatable
         'nis',
         'phone',
         'photo',
+        'active',
     ];
 
     /**
@@ -45,6 +46,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'password' => 'hashed',
+        'active' => 'boolean',
     ];
 
     public function getRedirectToAttribute(){

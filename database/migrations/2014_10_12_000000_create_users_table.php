@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('nis')->nullable();
             $table->string('phone')->nullable();
             $table->string('photo')->nullable();
+            $table->boolean('active')->default(true);
 
             $table->timestamps();
         });

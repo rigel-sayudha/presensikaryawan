@@ -31,8 +31,8 @@
                             @endif
                         </td>
                         <td>
-                            <input type="checkbox" class="toggle toggle-primary toggle-xs" @checked($data->approved)
-                                wire:change="approveAttendance({{ $data->id }})">
+                            <input type="checkbox" class="toggle toggle-primary toggle-sm" @checked($data->approved)
+                                wire:change="$dispatch('approveAttendance', {attendance : {{ $data->id }}})">
                         </td>
                         <td>
                             <div class="flex gap-1 justify-center">
