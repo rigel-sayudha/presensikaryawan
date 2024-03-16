@@ -15,6 +15,16 @@ class Actions extends Component
     public $mode = "create";
     public UserForm $form;
 
+    #[On('toggleActiveUser')]
+    public function toggleActiveUser(User $user)
+    {
+        $newStatus = $user->active;
+        $user->update([
+            'active' => !$newStatus
+        ]);
+        $this->dispatch('reload');
+    }
+
     #[On('createUser')]
     public function createUser(){
         $this->show = true;

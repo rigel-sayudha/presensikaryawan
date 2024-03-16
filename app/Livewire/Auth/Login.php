@@ -16,6 +16,8 @@ class Login extends Component
             'password' => 'required',
         ]);
 
+        $valid['active'] = true;
+
         if (Auth::attempt($valid)) {
             $user = Auth::user();
             $this->redirect($user->redirect_to, navigate:true);

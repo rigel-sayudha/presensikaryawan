@@ -13,6 +13,16 @@ class Actions extends Component
     public ?Attendance $attendance;
     public AttendanceForm $form;
 
+    #[On('approveAttendance')]
+    public function approveAttendance(Attendance $attendance)
+    {
+        $newStatus = $attendance->approved;
+        $attendance->update([
+            'approved' => !$newStatus
+        ]);
+        $this->dispatch('reload');
+    }
+
     #[On('deleteAttendance')]
     public function deleteAttendance(Attendance $attendance)
     {

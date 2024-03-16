@@ -14,6 +14,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Role</th>
+                <th>Active</th>
                 <th class="text-center">Actions</th>
             </thead>
             <tbody>
@@ -32,6 +33,10 @@
                         </td>
                         <td>{{ $data->email }}</td>
                         <td>{{ $data->getRoleNames()->first() }}</td>
+                        <td>
+                            <input type="checkbox" class="toggle toggle-primary toggle-sm" @checked($data->active)
+                                wire:change="$dispatch('toggleActiveUser', {user : {{ $data->id }}})">
+                        </td>
                         <td>
                             <div class="flex gap-1 justify-center">
                                 <a href="{{ route('user.show', $data) }}" class="btn btn-xs btn-square input-bordered"

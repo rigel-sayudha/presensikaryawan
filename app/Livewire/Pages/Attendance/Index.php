@@ -10,16 +10,9 @@ class Index extends Component
     public $no = 1;
     public $date;
     public $search;
+    public $withActions = true;
 
     protected $listeners = ['reload' => '$refresh'];
-
-    public function approveAttendance(Attendance $attendance)
-    {
-        $newStatus = $attendance->approved;
-        $attendance->update([
-            'approved' => !$newStatus
-        ]);
-    }
 
     public function render()
     {
