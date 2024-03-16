@@ -17,11 +17,11 @@
                         </div>
                         <div class="flex flex-col p-2">
                             <span class="text-xs capitalize opacity-50">Masuk</span>
-                            <div>{{ $attendance->in }}</div>
+                            <div>{{ $attendance->in ? $attendance->in->format('H:i:s') : '-' }}</div>
                         </div>
                         <div class="flex flex-col p-2">
                             <span class="text-xs capitalize opacity-50">Keluar</span>
-                            <div>{{ $attendance->out ?? '-' }}</div>
+                            <div>{{ $attendance->out ? $attendance->out->format('H:i:s') : '-' }}</div>
                         </div>
                         <div class="flex flex-col p-2 col-span-full">
                             <span class="text-xs capitalize opacity-50">Catatan</span>
