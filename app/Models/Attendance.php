@@ -45,4 +45,10 @@ class Attendance extends Model
         $durasi = $waktuMulaiObj->diff($waktuSelesaiObj);
         return $durasi->format('%H jam %I menit');
     }
+
+    protected $casts = [
+        'date' => 'date',
+        'in' => 'datetime',
+        'out' => 'datetime',
+    ];
 }
