@@ -22,8 +22,8 @@ class AttendanceForm extends Form
 
         $this->date = $attendance->date;
         $this->user_id = $attendance->user_id;
-        $this->in = $attendance->in;
-        $this->out = $attendance->out;
+        $this->in = date('H:i', strtotime($attendance->in));
+        $this->out = $attendance->out ? date('H:i', strtotime($attendance->out)) : null;
         $this->note = $attendance->note;
         $this->approved = $attendance->approved;
     }

@@ -11,7 +11,8 @@
                     <span>{{ date('d F Y', strtotime($tanggal)) }}</span>
                 @endif
             </div>
-            <button class="btn btn-square">
+            <button class="btn btn-square"
+                wire:click="$dispatch('showAttendance', {attendance:{{ $attendance->id ?? null }}})">
                 <x-tabler-calendar-check />
             </button>
         </div>
