@@ -7,7 +7,7 @@ use Livewire\Component;
 class Watch extends Component
 {
     public $currentTime;
-
+    
     public function mount()
     {
         $this->currentTime = now()->toTimeString();
