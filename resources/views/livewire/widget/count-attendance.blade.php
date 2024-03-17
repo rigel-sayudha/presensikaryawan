@@ -6,7 +6,7 @@
     <div class="card-body">
         <div class="card-actions">
             <progress class="progress progress-primary w-full" value="{{ $attendanceCount }}"
-                max="{{ $userCount }}"></progress>
+            max="{{ $userCount }}"></progress>
         </div>
     </div>
 </div>
