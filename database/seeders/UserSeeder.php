@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 
 class UserSeeder extends Seeder
 {
@@ -13,8 +14,31 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(12)->create()->each(function($user){
-            $user->assignRole('siswa');
-        });
+        $datas = [
+            [
+                'name' => 'Administrator',
+                'email' => 'admin@absensimagang.com',
+                'password' => 'admin123',
+                'role' => 'superadmin',
+            ],
+            [
+                'name' => 'Contoh siswa',
+                'email' => 'siswa@absensimagang.com',
+                'password' => 'siswa123',
+                'role' => 'siswa',
+            ],
+            [
+                'name' => 'Contoh pembina',
+                'email' => 'pembina@absensimagang.com',
+                'password' => 'pembina123',
+                'role' => 'pembina',
+            ],
+        ];
+
+        foreach ($datas as $data) {
+            $user = User::updateOrCreate(Arr::except($data, 'role'));
+            $user->assignRole($data['role']);
+        }
+
     }
 }

@@ -17,15 +17,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             RoleSeeder::class,
-            PermissionSeeder::class
+            PermissionSeeder::class,
+            UserSeeder::class
         ]);
-
-        $user = User::create([
-            'name' => 'Administrator',
-            'email' => 'admin@absensimagang.com',
-            'password' => 'admin123'
-        ]);
-
-        $user->assignRole('superadmin');
     }
 }
