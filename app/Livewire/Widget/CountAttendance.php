@@ -15,7 +15,7 @@ class CountAttendance extends Component
         $attendanceCount = Attendance::where('date', date('Y-m-d'))->count();
         $userCount = User::where('active', true)->role('siswa')->count();
 
-        $percentage = ($attendanceCount / $userCount) * 100;
+        $percentage = $attendanceCount ? ($attendanceCount / $userCount) * 100 : 0;
 
         return view('livewire.widget.count-attendance', [
             'attendanceCount' => $attendanceCount,
