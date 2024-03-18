@@ -11,8 +11,8 @@ class Watch extends Component
 
     public function mount()
     {
-        $this->waktu = now()->format('Y-m-d');
-        $this->tanggal = now()->format('H:i:s');
+       $this->tanggal = now()->format('Y-m-d');
+        $this->waktu = now()->format('H:i:s');
     }
     public function render()
     {
