@@ -6,15 +6,16 @@ use Livewire\Component;
 
 class Watch extends Component
 {
-    public $currentTime;
-    
+    public $waktu;
+    public $tanggal;
+
     public function mount()
     {
-        $this->currentTime = now()->toTimeString();
+        $this->waktu = now()->format('Y-m-d');
+        $this->tanggal = now()->format('H:i:s');
     }
     public function render()
     {
         return view('livewire.widget.watch');
     }
 }
-
