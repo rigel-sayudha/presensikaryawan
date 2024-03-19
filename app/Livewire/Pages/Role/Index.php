@@ -14,7 +14,12 @@ class Index extends Component
     protected $listeners = ['reload' => '$refresh'];
 
     public function applyPermission(Permission $permission, $role){
-        $permission->assignRole($role);
+        if ($permission->hasRole($role)) {
+            $permission->removeRole($role);
+        }
+        else{
+            $permission->assignRole($role);
+        }
     }
 
     public function deletePermission(Permission $permission){

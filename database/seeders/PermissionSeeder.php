@@ -19,15 +19,29 @@ class PermissionSeeder extends Seeder
             'user.edit' => ['pembina'],
             'user.delete' => ['pembina'],
             'user.show' => ['pembina'],
+
+            'role.index' => [],
+            'role.create' => [],
+            'role.edit' => [],
+            'role.delete' => [],
+
+            'permission.index' => [],
+            'permission.create' => [],
+            'permission.edit' => [],
+            'permission.delete' => [],
+
             'attendance.index' => ['pembina'],
             'attendance.mine' => ['siswa'],
+            'attendance.approve' => ['pembina'],
             'attendance.create' => ['siswa'],
             'attendance.edit' => ['pembina', 'siswa'],
             'attendance.delete' => ['pembina', 'siswa'],
+
             'dashboard' => ['pembina'],
             'home' => ['siswa'],
             'profile' => ['siswa', 'pembina'],
             'documentation' => ['siswa', 'pembina'],
+
             'setting.registration-code' => ['pembina'],
         ];
 
@@ -36,8 +50,10 @@ class PermissionSeeder extends Seeder
                 'name' => $permit,
             ]);
 
-            foreach ($roles as $name) {
-                $permission->assignRole($name);
+            if (count($roles) > 0) {
+                foreach ($roles as $name) {
+                    $permission->assignRole($name);
+                }
             }
         }
     }
