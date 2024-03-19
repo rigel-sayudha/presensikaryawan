@@ -18,19 +18,18 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->group(function(){
-    Route::get('/home', \App\Livewire\Pages\Home::class)->name('home');
-    Route::get('/dashboard', \App\Livewire\Pages\Dashboard::class)->name('dashboard');
-    Route::get('/profile', \App\Livewire\Pages\Profile::class)->name('profile');
-    Route::get('/dokumentasi', \App\Livewire\Pages\Dokumentasi::class)->name('dokumentasi');
+    Route::middleware('can:home')->get('/home', \App\Livewire\Pages\Home::class)->name('home');
+    Route::middleware('can:dashboard')->get('/dashboard', \App\Livewire\Pages\Dashboard::class)->name('dashboard');
+    Route::middleware('can:profile')->get('/profile', \App\Livewire\Pages\Profile::class)->name('profile');
+    Route::middleware('can:documentation')->get('/dokumentasi', \App\Livewire\Pages\Dokumentasi::class)->name('dokumentasi');
 
-    Route::get('/attendance', \App\Livewire\Pages\Attendance\Index::class)->name('attendance.index');
-    Route::get('/attendance/mine', \App\Livewire\Pages\Attendance\Mine::class)->name('attendance.mine');
+    Route::middleware('can:attendance.index')->get('/attendance', \App\Livewire\Pages\Attendance\Index::class)->name('attendance.index');
+    Route::middleware('can:attendance.mine')->get('/attendance/mine', \App\Livewire\Pages\Attendance\Mine::class)->name('attendance.mine');
+    Route::middleware('can:user.index')->get('/user', \App\Livewire\Pages\User\Index::class)->name('user.index');
+    Route::middleware('can:user')->get('/user/{user}', \App\Livewire\Pages\User\Show::class)->name('user.show');
 
-    Route::get('/user', \App\Livewire\Pages\User\Index::class)->name('user.index');
-    Route::get('/user/{user}', \App\Livewire\Pages\User\Show::class)->name('user.show');
-
-    Route::get('/setting/registration-code', \App\Livewire\Pages\Setting\RegistrationCode::class)->name('setting.registration-code');
-    Route::get('/role', \App\Livewire\Pages\Role\Index::class)->name('role.index');
+    Route::middleware('can:setting.registration-code')->get('/setting/registration-code', \App\Livewire\Pages\Setting\RegistrationCode::class)->name('setting.registration-code');
+    Route::middleware('can:role.index')->get('/role', \App\Livewire\Pages\Role\Index::class)->name('role.index');
 });
 
 Route::middleware('guest')->group(function(){
