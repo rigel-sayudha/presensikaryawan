@@ -23,7 +23,7 @@ class Register extends Component
             'password' => 'required',
             'kodeRegistrasi' => 'required|in:'.$this->validKodeRegistrasi,
         ]);
-
+        $valid['active'] = true;
         $valid['password'] = Hash::make($this->password);
         $user = User::create($valid);
         $user->assignRole('siswa');

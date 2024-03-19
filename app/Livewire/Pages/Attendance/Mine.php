@@ -32,6 +32,4 @@ class Mine extends Component
             'mine' => $this->mine
         ]);
     }
-
-
 }
