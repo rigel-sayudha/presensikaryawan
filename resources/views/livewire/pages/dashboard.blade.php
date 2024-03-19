@@ -3,10 +3,7 @@
     <div class="grid grid-cols-3 gap-6">
         @livewire('widget.count-attendance')
         @livewire('widget.profile')
-
-        <div class="grid place-content-center skeleton">
-            Widget tanggal
-        </div>
+        @livewire('widget.watch')
     </div>
 
     @livewire('pages.attendance.index', [
