@@ -13,7 +13,9 @@
                 <th>Tanggal</th>
                 <th>Masuk</th>
                 <th>Keluar</th>
-                <th>Approved</th>
+                @can('attendance.approve')
+                    <th>Approved</th>
+                @endcan
                 @if ($withActions)
                     <th class="text-center">Action</th>
                 @endif
@@ -34,10 +36,12 @@
                                 {{ date('H:i', strtotime($data->out)) }}
                             @endif
                         </td>
-                        <td>
-                            <input type="checkbox" class="toggle toggle-primary toggle-sm" @checked($data->approved)
-                                wire:change="$dispatch('approveAttendance', {attendance : {{ $data->id }}})">
-                        </td>
+                        @can('attendance.approve')
+                            <td>
+                                <input type="checkbox" class="toggle toggle-primary toggle-sm" @checked($data->approved)
+                                    wire:change="$dispatch('approveAttendance', {attendance : {{ $data->id }}})">
+                            </td>
+                        @endcan
                         @if ($withActions)
                             <td>
                                 <div class="flex gap-1 justify-center">
@@ -45,14 +49,18 @@
                                         wire:click="$dispatch('showAttendance', {attendance : {{ $data->id }}})">
                                         <x-tabler-message class="icon-4" />
                                     </button>
-                                    <button class="btn btn-xs btn-square input-bordered"
-                                        wire:click="$dispatch('editAttendance', {attendance : {{ $data->id }}})">
-                                        <x-tabler-edit class="icon-4" />
-                                    </button>
-                                    <button class="btn btn-xs btn-square input-bordered"
-                                        wire:click="$dispatch('deleteAttendance', {attendance : {{ $data->id }}})">
-                                        <x-tabler-trash class="icon-4" />
-                                    </button>
+                                    @can('attendance.edit')
+                                        <button class="btn btn-xs btn-square input-bordered"
+                                            wire:click="$dispatch('editAttendance', {attendance : {{ $data->id }}})">
+                                            <x-tabler-edit class="icon-4" />
+                                        </button>
+                                    @endcan
+                                    @can('attendance.delete')
+                                        <button class="btn btn-xs btn-square input-bordered"
+                                            wire:click="$dispatch('deleteAttendance', {attendance : {{ $data->id }}})">
+                                            <x-tabler-trash class="icon-4" />
+                                        </button>
+                                    @endcan
                                 </div>
                             </td>
                         @endif

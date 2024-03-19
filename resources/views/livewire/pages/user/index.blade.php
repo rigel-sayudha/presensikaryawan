@@ -1,10 +1,12 @@
 <div class="space-y-6">
     <div class="flex items-center justify-between">
         <input type="search" class="input input-bordered" placeholder="Pencarian" wire:model.live="cari">
-        <button class="btn btn-primary" wire:click="$dispatch('createUser')">
-            <x-tabler-circle-plus class="icon-5" />
-            <span>Tambah user</span>
-        </button>
+        @can('user.create')
+            <button class="btn btn-primary" wire:click="$dispatch('createUser')">
+                <x-tabler-circle-plus class="icon-5" />
+                <span>Tambah user</span>
+            </button>
+        @endcan
     </div>
 
     <div class="table-wrapper">
@@ -14,8 +16,12 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Role</th>
-                <th>Active</th>
-                <th class="text-center">Actions</th>
+                @can('user.edit')
+                    <th>Active</th>
+                @endcan
+                @canany(['user.show', 'user.edit', 'user.delete'])
+                    <th class="text-center">Actions</th>
+                @endcanany
             </thead>
             <tbody>
                 @forelse ($datas as $data)
@@ -33,26 +39,36 @@
                         </td>
                         <td>{{ $data->email }}</td>
                         <td>{{ $data->getRoleNames()->first() }}</td>
-                        <td>
-                            <input type="checkbox" class="toggle toggle-primary toggle-sm" @checked($data->active)
-                                wire:change="$dispatch('toggleActiveUser', {user : {{ $data->id }}})">
-                        </td>
-                        <td>
-                            <div class="flex gap-1 justify-center">
-                                <a href="{{ route('user.show', $data) }}" class="btn btn-xs btn-square input-bordered"
-                                    wire:navigate>
-                                    <x-tabler-folder class="icon-4" />
-                                </a>
-                                <button class="btn btn-xs btn-square input-bordered"
-                                    wire:click="$dispatch('updateUser', {user:{{ $data->id }}})">
-                                    <x-tabler-edit class="icon-4" />
-                                </button>
-                                <button class="btn btn-xs btn-square input-bordered"
-                                    wire:click="$dispatch('deleteUser', {user:{{ $data->id }}})">
-                                    <x-tabler-trash class="icon-4" />
-                                </button>
-                            </div>
-                        </td>
+                        @can('user.edit')
+                            <td>
+                                <input type="checkbox" class="toggle toggle-primary toggle-sm" @checked($data->active)
+                                    wire:change="$dispatch('toggleActiveUser', {user : {{ $data->id }}})">
+                            </td>
+                        @endcan
+                        @canany(['user.show', 'user.edit', 'user.delete'])
+                            <td>
+                                <div class="flex gap-1 justify-center">
+                                    @can('user.show')
+                                        <a href="{{ route('user.show', $data) }}" class="btn btn-xs btn-square input-bordered"
+                                            wire:navigate>
+                                            <x-tabler-folder class="icon-4" />
+                                        </a>
+                                    @endcan
+                                    @can('user.edit')
+                                        <button class="btn btn-xs btn-square input-bordered"
+                                            wire:click="$dispatch('updateUser', {user:{{ $data->id }}})">
+                                            <x-tabler-edit class="icon-4" />
+                                        </button>
+                                    @endcan
+                                    @can('user.delete')
+                                        <button class="btn btn-xs btn-square input-bordered"
+                                            wire:click="$dispatch('deleteUser', {user:{{ $data->id }}})">
+                                            <x-tabler-trash class="icon-4" />
+                                        </button>
+                                    @endcan
+                                </div>
+                            </td>
+                        @endcanany
                     </tr>
                 @empty
                     <tr>

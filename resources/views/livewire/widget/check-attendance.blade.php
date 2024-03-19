@@ -20,10 +20,12 @@
 
         <div class="card-body">
             <div class="card-actions">
-                <button class="btn flex-1 btn-primary btn-sm" @disabled($attendance ? true : false) wire:click="checkIn">
-                    <x-tabler-login class="size-5" />
-                    <span>Check in</span>
-                </button>
+                @can('attendance.create')
+                    <button class="btn flex-1 btn-primary btn-sm" @disabled($attendance ? true : false) wire:click="checkIn">
+                        <x-tabler-login class="size-5" />
+                        <span>Check in</span>
+                    </button>
+                @endcan
                 <button class="btn flex-1 btn-primary btn-sm" @disabled($attendance && $attendance->out == null ? false : true)
                     wire:click="$set('show', true)">
                     <x-tabler-logout class="size-5" />
