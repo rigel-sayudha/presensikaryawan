@@ -18,6 +18,7 @@ class PermissionSeeder extends Seeder
             'user.create' => ['pembina'],
             'user.edit' => ['pembina'],
             'user.delete' => ['pembina'],
+            'user.show' => ['pembina'],
             'attendance.index' => ['pembina'],
             'attendance.mine' => ['siswa'],
             'attendance.create' => ['siswa'],

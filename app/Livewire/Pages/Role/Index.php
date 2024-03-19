@@ -25,7 +25,7 @@ class Index extends Component
     {
         return view('livewire.pages.role.index', [
             'roles' => Role::whereNot('name', 'superadmin')->get(),
-            'permissions' => Permission::when($this->cari, function($q){
+            'permissions' => Permission::orderBy('name')->when($this->cari, function($q){
                 $q->where('name', 'like', "%{$this->cari}%");
             })->get(),
         ]);
