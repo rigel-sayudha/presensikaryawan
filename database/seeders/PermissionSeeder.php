@@ -25,11 +25,6 @@ class PermissionSeeder extends Seeder
             'role.edit' => [],
             'role.delete' => [],
 
-            'permission.index' => [],
-            'permission.create' => [],
-            'permission.edit' => [],
-            'permission.delete' => [],
-
             'attendance.index' => ['pembina'],
             'attendance.mine' => ['siswa'],
             'attendance.approve' => ['pembina'],
