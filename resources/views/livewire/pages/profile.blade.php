@@ -1,8 +1,8 @@
-<div class="card max-w-sm mx-auto">
+<div class="card card-compact max-w-sm mx-auto">
     <form class="card-body space-y-4" wire:submit="simpan">
         <div class="flex items-center justify-center">
             <label for="pickphoto" class="avatar cursor-pointer">
-                <div class="w-32 rounded">
+                <div class="w-32 rounded-full">
                     @if ($form->photo)
                         <img src="{{ $form->photo->temporaryUrl() }}" alt="">
                     @else
