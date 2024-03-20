@@ -36,9 +36,9 @@
                         {{ $slot }}
                     </div>
                     @if (Route::is('login'))
-                        <pre data-prefix="#"><code>Belum punya akun? <a href="{{ route('register') }}">Daftar</a></code></pre>
+                        <pre data-prefix="#"><code>Belum punya akun? <a href="{{ route('register') }}" class="link">Daftar</a></code></pre>
                     @elseif (Route::is('register'))
-                        <pre data-prefix="#"><code>Sudah punya akun? <a href="{{ route('login') }}">Login</a></code></pre>
+                        <pre data-prefix="#"><code>Sudah punya akun? <a href="{{ route('login') }}" class="link">Login</a></code></pre>
                     @endif
                 </div>
             </div>
