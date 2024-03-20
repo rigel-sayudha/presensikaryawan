@@ -5,11 +5,13 @@ namespace App\Livewire\Pages\Attendance;
 use App\Livewire\Forms\AttendanceForm;
 use App\Models\Attendance;
 use App\Models\User;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Actions extends Component
 {
+    use LivewireAlert;
     public ?Attendance $attendance;
     public AttendanceForm $form;
 
@@ -21,6 +23,7 @@ class Actions extends Component
             'approved' => !$newStatus
         ]);
         $this->dispatch('reload');
+        $this->alert('success', 'Status approval berhasil diperbarui');
     }
 
     #[On('deleteAttendance')]
@@ -28,6 +31,7 @@ class Actions extends Component
     {
         $attendance->delete();
         $this->dispatch('reload');
+        $this->alert('success', 'Absensi berhasil dihapus');
     }
 
     #[On('editAttendance')]
@@ -48,6 +52,7 @@ class Actions extends Component
         }
         $this->dispatch('reload');
         $this->resetAttendance();
+        $this->alert('success', 'Absensi berhasil ubah');
     }
 
     public function render()

@@ -5,12 +5,14 @@ namespace App\Livewire\Pages\User;
 use App\Livewire\Forms\UserForm;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
 
 class Actions extends Component
 {
+    use LivewireAlert;
     public $show = false;
     public $mode = "create";
     public UserForm $form;
@@ -22,6 +24,7 @@ class Actions extends Component
         $user->update([
             'active' => !$newStatus
         ]);
+        $this->alert('success', 'Status active user berhasil diperbarui');
         $this->dispatch('reload');
     }
 
@@ -41,6 +44,7 @@ class Actions extends Component
     #[On('deleteUser')]
     public function deleteUser(User $user){
         $user->delete();
+        $this->alert('success', 'User berhasil dihapus');
         $this->dispatch('reload');
     }
 
@@ -50,6 +54,7 @@ class Actions extends Component
             'password' => Hash::make('password')
         ]);
         $this->dispatch('reload');
+        $this->alert('success', 'Passwor berhasil direset. password baru : "password"');
     }
 
     public function simpan(){
@@ -61,6 +66,7 @@ class Actions extends Component
         }
 
         $this->show = false;
+        $this->alert('success', 'Data user berhasil diperbarui');
         $this->dispatch('reload');
     }
 

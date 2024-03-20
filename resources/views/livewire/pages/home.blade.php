@@ -4,4 +4,6 @@
         @livewire('widget.watch')
         @livewire('widget.profile')
     </div>
+
+    @livewire('pages.attendance.show')
 </div>

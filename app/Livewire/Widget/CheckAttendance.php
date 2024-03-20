@@ -4,10 +4,12 @@ namespace App\Livewire\Widget;
 
 use App\Livewire\Forms\AttendanceForm;
 use App\Models\Attendance;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class CheckAttendance extends Component
 {
+    use LivewireAlert;
     public $show = false;
     public $tanggal;
     public AttendanceForm $form;
@@ -30,6 +32,7 @@ class CheckAttendance extends Component
         $this->form->store();
 
         $this->dispatch('reload');
+        $this->alert('success', 'Checkin absensi berhasil');
     }
 
     public function checkOut(){
@@ -42,6 +45,8 @@ class CheckAttendance extends Component
 
         $this->dispatch('reload');
         $this->show = false;
+
+        $this->alert('success', 'Checkout absensi berhasil');
     }
 
     public function render()

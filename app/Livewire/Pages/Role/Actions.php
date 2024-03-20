@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages\Role;
 
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Spatie\Permission\Models\Permission;
@@ -9,6 +10,7 @@ use Spatie\Permission\Models\Role;
 
 class Actions extends Component
 {
+    use LivewireAlert;
     public $show = false;
     public $model = "permission";
 
@@ -31,7 +33,7 @@ class Actions extends Component
     }
 
     public function simpan(){
-        $valid = $this->validate([
+        $this->validate([
             'name' => 'required',
             'model' => 'required',
         ]);
@@ -54,6 +56,7 @@ class Actions extends Component
         }
 
         $this->reset();
+        $this->alert('success', 'Role dan permission berhasil diperbarui');
         $this->dispatch('reload');
     }
 
