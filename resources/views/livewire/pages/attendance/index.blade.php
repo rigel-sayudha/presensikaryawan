@@ -1,6 +1,6 @@
 <div class="space-y-6">
     @if ($withActions)
-        <div class="flex justify-between">
+        <div class="flex flex-col lg:flex-row justify-between gap-2">
             <input type="search" class="input input-bordered" wire:model.live="search" placeholder="Pencarian" />
             <input type="date" class="input input-bordered" wire:model.live="date" />
         </div>
