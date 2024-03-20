@@ -33,7 +33,13 @@
         </div>
     </div>
 
-    <div class="card-title">Riwayat absensi</div>
+    <div class="flex justify-between items-center">
+        <div class="font-semibold">Riwayat absensi</div>
+        <button class="btn btn-primary btn-sm">
+            <x-tabler-download class="icon-4" />
+            <span>Download rekap</span>
+        </button>
+    </div>
 
     <div class="table-wrapper">
         <table class="table">
@@ -41,6 +47,7 @@
                 <th>No</th>
                 <th>Tanggal</th>
                 <th>Masuk - Keluar</th>
+                <th>Durasi</th>
                 <th>Catatan</th>
             </thead>
             <tbody>
@@ -49,9 +56,9 @@
                         <td>{{ $no++ }}</td>
                         <td>{{ date('d M Y', strtotime($att->date)) }}</td>
                         <td>{{ $att->range_time }}</td>
+                        <td>{{ $att->duration }}</td>
                         <td class="whitespace-normal">
                             <div class="line-clamp-1">
-
                                 {{ $att->note }}
                             </div>
                         </td>

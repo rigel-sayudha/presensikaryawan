@@ -18,6 +18,8 @@ class UserForm extends Form
     public $school;
     public $nis;
     public $phone;
+
+    #[Validate('max:2048', message:"Ukuran :attribute terlalu besar")]
     public $photo;
     public $role;
 
@@ -68,9 +70,17 @@ class UserForm extends Form
         ]);
 
         if ($this->photo) {
+            $this->validate([
+                'photo' => 'required|max:2048'
+            ]);
+
             $filename = $this->photo->hashName('user');
-            Storage::put('user', $this->photo);
-            $valid['photo'] = $filename;
+            if(Storage::put('user', $this->photo)){
+                $valid['photo'] = $filename;
+            }
+            else{
+                if($this->user->photo) Storage::delete($this->user->photo);
+            }
         }
 
         if ($this->password) {

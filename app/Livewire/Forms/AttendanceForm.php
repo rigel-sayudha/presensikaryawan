@@ -20,7 +20,7 @@ class AttendanceForm extends Form
     public function setAttendance(Attendance $attendance){
         $this->attendance = $attendance;
 
-        $this->date = $attendance->date;
+        $this->date = $attendance->date ? date('Y-m-d', strtotime($attendance->date)) : null;
         $this->user_id = $attendance->user_id;
         $this->in = date('H:i', strtotime($attendance->in));
         $this->out = $attendance->out ? date('H:i', strtotime($attendance->out)) : null;

@@ -26,7 +26,7 @@ class Attendance extends Model
     public function getRangeTimeAttribute(){
         return implode(' - ', [
             date('H:i', strtotime($this->in)),
-            date('H:i', strtotime($this->out)),
+            $this->out ? date('H:i', strtotime($this->out)) : "--:--",
         ]);
     }
 

@@ -1,10 +1,10 @@
 <div class="space-y-6">
-    <div class="flex justify-between">
+    <div class="flex flex-col lg:flex-row justify-between gap-2">
         <input type="search" class="input input-bordered" placeholder="Cari permission" wire:model.live="cari">
         @can('role.create')
             <button class="btn btn-primary" wire:click="$dispatch('addPermission')">
                 <x-tabler-circle-plus class="icon-5" />
-                <span>Create Role or permission</span>
+                <span>Role or permission</span>
             </button>
         @endcan
     </div>

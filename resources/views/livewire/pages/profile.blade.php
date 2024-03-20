@@ -1,8 +1,11 @@
-<div class="card max-w-sm mx-auto">
+<div class="card card-compact max-w-sm mx-auto">
     <form class="card-body space-y-4" wire:submit="simpan">
-        <div class="flex items-center justify-center">
+        <div class="flex flex-col items-center justify-center gap-2">
             <label for="pickphoto" class="avatar cursor-pointer">
-                <div class="w-32 rounded">
+                <div
+                    class="w-32 rounded-full @error('form.photo')
+                    ring ring-error ring-offset-base-100 ring-offset-2
+                @enderror">
                     @if ($form->photo)
                         <img src="{{ $form->photo->temporaryUrl() }}" alt="">
                     @else
@@ -10,7 +13,14 @@
                     @endif
                 </div>
             </label>
-            <input id="pickphoto" type="file" wire:model="form.photo" placeholder="photo" class="hidden">
+            <input id="pickphoto" type="file" wire:model="form.photo" placeholder="photo" class="hidden"
+                accept="image/*">
+
+            @error('form.photo')
+                <div class="text-xs text-error">{{ $message }}</div>
+            @else
+                <div class="text-xs text-muted">Upload maximal 2 MB</div>
+            @enderror
         </div>
 
         <div class=" space-y-2">

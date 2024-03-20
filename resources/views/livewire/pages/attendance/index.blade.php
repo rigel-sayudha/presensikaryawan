@@ -1,6 +1,6 @@
 <div class="space-y-6">
     @if ($withActions)
-        <div class="flex justify-between">
+        <div class="flex flex-col lg:flex-row justify-between gap-2">
             <input type="search" class="input input-bordered" wire:model.live="search" placeholder="Pencarian" />
             <input type="date" class="input input-bordered" wire:model.live="date" />
         </div>
@@ -14,7 +14,7 @@
                 <th>Masuk</th>
                 <th>Keluar</th>
                 @can('attendance.approve')
-                    <th>Approved</th>
+                    <th class="text-center">Approved</th>
                 @endcan
                 @if ($withActions)
                     <th class="text-center">Action</th>
@@ -29,17 +29,22 @@
                                 {{ $data->user->name }}
                             </a>
                         </td>
-                        <td class="font-mono">{{ date('d M Y', strtotime($data->date)) }}</td>
-                        <td class="font-mono">{{ date('H:i', strtotime($data->in)) }}</td>
-                        <td class="font-mono">
+                        <td>{{ date('d M Y', strtotime($data->date)) }}</td>
+                        <td>{{ date('H:i', strtotime($data->in)) }}</td>
+                        <td>
                             @if ($data->out)
                                 {{ date('H:i', strtotime($data->out)) }}
+                            @else
+                                <x-tabler-clock class="icon-4 text-warning" />
                             @endif
                         </td>
                         @can('attendance.approve')
                             <td>
-                                <input type="checkbox" class="toggle toggle-primary toggle-sm" @checked($data->approved)
-                                    wire:change="$dispatch('approveAttendance', {attendance : {{ $data->id }}})">
+                                <div class="flex items-center justify-center">
+                                    <input type="checkbox" class="toggle toggle-primary toggle-sm"
+                                        @checked($data->approved)
+                                        wire:change="$dispatch('approveAttendance', {attendance : {{ $data->id }}})">
+                                </div>
                             </td>
                         @endcan
                         @if ($withActions)

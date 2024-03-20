@@ -1,16 +1,15 @@
-<div>
-    <div>
-        <div class="flex justify-end mb-3">  
-            <input type="date" class="input input-bordered" wire:model.live="date" />
-        </div>
-        <div class="table-wrapper">
+<div class="space-y-6">
+    <div class="flex justify-between">
+        <input type="date" class="input input-bordered" wire:model.live="date" />
+    </div>
+    <div class="table-wrapper">
         <table class="table">
             <thead>
                 <tr>
                     <th>No</th>
                     <th>Tanggal</th>
-                    <th>Absen Masuk</th>
-                    <th>Absen Keluar</th>                  
+                    <th>Masuk - keluar</th>
+                    <th>Durasi</th>
                     <th>Catatan</th>
                     <th>Status</th>
                 </tr>
@@ -20,21 +19,23 @@
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $data->date->format('d F Y') }}</td>
-                        <td>{{ $data->in->format('H:i') }}</td>
-                        <td>{{ $data->out ? $data->out->format('H:i') : '-' }}</td>
-                        <td>{{ $data->note }}</td>
+                        <td>{{ $data->range_time }}</td>
+                        <td>{{ $data->duration }}</td>
                         <td>
-                            @if ($data->approved == 1)
-                                Disetujui
-                            @else
-                                -
-                            @endif
+                            <div class="hidden lg:flex whitespace-normal">{{ $data->note }}</div>
+                            <div class="flex items-center justify-center lg:hidden">
+                                <button class="btn btn-xs btn-square input-bordered"
+                                    wire:click="$dispatch('showAttendance', {attendance: {{ $data->id }}})">
+                                    <x-tabler-message class="icon-4" />
+                                </button>
+                            </div>
                         </td>
+                        <td class="text-center">{{ $data->approved ? 'Disetujui' : '-' }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        </div>
     </div>
-</div>
 
+    @livewire('pages.attendance.show')
+</div>

@@ -4,10 +4,12 @@ namespace App\Livewire\Pages\Setting;
 
 use App\Models\Setting;
 use Illuminate\Support\Str;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class RegistrationCode extends Component
 {
+    use LivewireAlert;
     public $kode;
 
     public function generateKode(){
@@ -29,6 +31,8 @@ class RegistrationCode extends Component
         ],[
             'value' => $this->kode
         ]);
+
+        $this->alert('success', 'Kode registrasi berhasil diubah');
     }
 
     public function render()

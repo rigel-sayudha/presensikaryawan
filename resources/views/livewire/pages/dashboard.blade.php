@@ -1,6 +1,6 @@
 <div class="space-y-6">
 
-    <div class="grid grid-cols-3 gap-6">
+    <div class="grid lg:grid-cols-3 gap-6">
         @livewire('widget.count-attendance')
         @livewire('widget.profile')
         @livewire('widget.watch')

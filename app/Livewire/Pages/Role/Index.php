@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Pages\Role;
 
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class Index extends Component
 {
+    use LivewireAlert;
     public $cari = "";
     public $no = 1;
 
@@ -20,10 +22,13 @@ class Index extends Component
         else{
             $permission->assignRole($role);
         }
+
+        $this->alert('success', 'Berhasil mengubah status permission');
     }
 
     public function deletePermission(Permission $permission){
         $permission->delete();
+        $this->alert('success', 'Permission berhasil dihapus');
     }
 
     public function render()
