@@ -1,5 +1,5 @@
 <div class="space-y-6">
-    <div class="flex items-center justify-between">
+    <div class="flex flex-col lg:flex-row justify-between gap-2">
         <input type="search" class="input input-bordered" placeholder="Pencarian" wire:model.live="cari">
         @can('user.create')
             <button class="btn btn-primary" wire:click="$dispatch('createUser')">
