@@ -26,10 +26,13 @@ Route::middleware('auth')->group(function(){
     Route::middleware('can:attendance.index')->get('/attendance', \App\Livewire\Pages\Attendance\Index::class)->name('attendance.index');
     Route::middleware('can:attendance.mine')->get('/attendance/mine', \App\Livewire\Pages\Attendance\Mine::class)->name('attendance.mine');
     Route::middleware('can:user.index')->get('/user', \App\Livewire\Pages\User\Index::class)->name('user.index');
-    Route::middleware('can:user')->get('/user/{user}', \App\Livewire\Pages\User\Show::class)->name('user.show');
+    Route::middleware('can:user.show')->get('/user/{user}', \App\Livewire\Pages\User\Show::class)->name('user.show');
 
     Route::middleware('can:setting.registration-code')->get('/setting/registration-code', \App\Livewire\Pages\Setting\RegistrationCode::class)->name('setting.registration-code');
     Route::middleware('can:role.index')->get('/role', \App\Livewire\Pages\Role\Index::class)->name('role.index');
+
+    Route::middleware('can:office.index')->get('office', \App\Livewire\Pages\Office\Index::class)->name('office.index');
+    Route::middleware('can:office.search')->get('office/search', \App\Livewire\Pages\Office\Search::class)->name('office.search');
 });
 
 Route::middleware('guest')->group(function(){

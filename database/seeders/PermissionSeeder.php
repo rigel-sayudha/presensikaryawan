@@ -20,6 +20,12 @@ class PermissionSeeder extends Seeder
             'user.delete' => ['pembina'],
             'user.show' => ['pembina'],
 
+            'office.index' => ['pembina'],
+            'office.search' => ['siswa'],
+            'office.create' => ['pembina'],
+            'office.edit' => ['pembina'],
+            'office.delete' => ['pembina'],
+
             'role.index' => [],
             'role.create' => [],
             'role.edit' => [],

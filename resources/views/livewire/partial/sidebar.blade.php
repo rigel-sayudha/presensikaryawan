@@ -19,6 +19,14 @@
                         </a>
                     </li>
                 @endcan
+                @can('office.search')
+                    <li>
+                        <a href="{{ route('office.search') }}" @class(['active' => Route::is('office.search')]) wire:navigate>
+                            <x-tabler-map class="icon-5" />
+                            <span>Map Gedung</span>
+                        </a>
+                    </li>
+                @endcan
             </ul>
         </li>
     @endcanany
@@ -47,6 +55,14 @@
                         <a href="{{ route('user.index') }}" @class(['active' => Route::is(['user.index', 'user.show'])]) wire:navigate>
                             <x-tabler-users class="icon-5" />
                             <span>User management</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('office.index')
+                    <li>
+                        <a href="{{ route('office.index') }}" @class(['active' => Route::is(['office.index'])]) wire:navigate>
+                            <x-tabler-map class="icon-5" />
+                            <span>Map Gedung</span>
                         </a>
                     </li>
                 @endcan
