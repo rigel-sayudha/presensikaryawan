@@ -10,6 +10,8 @@ class Index extends Component
     public $no = 1;
     public $search;
 
+    protected $listeners = ['reload' => '$refresh'];
+
     public function render()
     {
         return view('livewire.pages.office.index', [

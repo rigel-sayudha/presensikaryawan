@@ -7,20 +7,14 @@ use App\Models\OfficeMap;
 
 class Item extends Component
 {
-    public $cari;
-    
+    public OfficeMap $officeMap;
+
+    public function mount(OfficeMap $officeMap){
+        $this->officeMap = $officeMap;
+    }
+
     public function render()
     {
-        $datas = [];
-        if ($this->cari) {
-            $datas = OfficeMap::where('name', 'like', "%{$this->cari}%")
-                        ->orWhere('building', 'like', "%{$this->cari}%")
-                        ->orWhere('floor', 'like', "%{$this->cari}%")
-                        ->get();
-        }
-    
-        return view('livewire.pages.office.item', [
-            'datas' => $datas
-        ]);
+        return view('livewire.pages.office.item');
     }
 }

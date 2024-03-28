@@ -8,13 +8,13 @@ use Livewire\Form;
 
 class OfficeMapForm extends Form
 {
-    public $name;
-    public $building;
-    public $floor;
-    public $desc;
-    public $photo;
+    public $name = "";
+    public $building = "";
+    public $floor = "";
+    public $desc = "";
+    public $photo = "";
 
-    public OfficeMap $officeMap;
+    public ?OfficeMap $officeMap;
 
     public function setOfficeMap(OfficeMap $officeMap){
         $this->officeMap = $officeMap;
@@ -32,7 +32,7 @@ class OfficeMapForm extends Form
             'building' =>'required',
             'floor' =>'required',
             'desc' =>'required',
-            'photo' =>'required',
+            'photo' =>'',
         ]);
 
         OfficeMap::create($valid);
@@ -45,7 +45,7 @@ class OfficeMapForm extends Form
             'building' =>'required',
             'floor' =>'required',
             'desc' =>'required',
-            'photo' =>'required',
+            'photo' =>'',
         ]);
 
         $this->officeMap->update($valid);

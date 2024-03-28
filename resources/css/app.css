@@ -43,8 +43,9 @@
     }
 
     .input-bordered,
+    .textarea-bordered,
     .select-bordered {
-        @apply border-2;
+        @apply border-2 border-base-300;
     }
 
     .modal {
