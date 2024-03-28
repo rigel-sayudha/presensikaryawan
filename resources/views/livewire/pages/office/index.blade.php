@@ -1,5 +1,5 @@
 <div class="space-y-6">
-    <div class="flex justify-between items-center">
+    <div class="flex flex-col lg:flex-row justify-between gap-2">
         <input type="search" class="input input-bordered" wire:model="search" placeholder="Pencarian">
         <button class="btn btn-primary" wire:click="$dispatch('createOfficeMap')">
             <x-tabler-circle-plus class="icon-5" />
