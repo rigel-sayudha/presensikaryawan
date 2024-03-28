@@ -4,8 +4,13 @@
             <h1 class="text-3xl font-bold">Cari Ruangan</h1>
             <p>Gunakan fitur ini untuk pencarian lokasi divisi atau ruangan. Anda bisa cari
                 berdasarkan ruangan atau divisi dan juga nama gedung dan lainnya.</p>
-            <input type="search" class="input input-bordered w-full max-w-xs self-center" wire:model.lazy="cari"
-                placeholder="Pencarian" />
+            <form class="flex gap-1" wire:submit="search">
+                <input type="search" class="join-item input input-bordered w-full" wire:model.live="cari"
+                    placeholder="Pencarian" />
+                <button class="join-item btn btn-primary btn-square">
+                    <x-tabler-search class="size-5" />
+                </button>
+            </form>
         </div>
     </div>
 
