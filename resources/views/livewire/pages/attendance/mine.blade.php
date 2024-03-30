@@ -11,18 +11,18 @@
                     <th>Masuk - keluar</th>
                     <th>Durasi</th>
                     <th>Catatan</th>
-                    <th>Status</th>
+                    <th class="text-center">Status</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($mine as $index => $data)
+                @foreach ($datas as $data)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $no++ }}</td>
                         <td>{{ $data->date->format('d F Y') }}</td>
                         <td>{{ $data->range_time }}</td>
                         <td>{{ $data->duration }}</td>
                         <td>
-                            <div class="hidden lg:flex whitespace-normal">{{ $data->note }}</div>
+                            <div class="hidden lg:flex line-clamp-1">{{ Str::limit($data->note, 40) }}</div>
                             <div class="flex items-center justify-center lg:hidden">
                                 <button class="btn btn-xs btn-square input-bordered"
                                     wire:click="$dispatch('showAttendance', {attendance: {{ $data->id }}})">

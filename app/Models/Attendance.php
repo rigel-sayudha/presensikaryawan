@@ -19,6 +19,12 @@ class Attendance extends Model
         'approved',
     ];
 
+    protected $casts = [
+        'date' => 'date',
+        'in' => 'datetime',
+        'out' => 'datetime',
+    ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -39,16 +45,29 @@ class Attendance extends Model
         }
     }
 
-    public function getDurationAttribute(){
-        $waktuMulaiObj = Carbon::parse($this->in);
-        $waktuSelesaiObj = Carbon::parse($this->out);
-        $durasi = $waktuMulaiObj->diff($waktuSelesaiObj);
-        return $durasi->format('%H jam %I menit');
+    public function getInOutDateTimeAttribute(){
+        return [
+            implode(" ", [
+                $this->date->format("Y-m-d"),
+                $this->in->format("H:i:s"),
+            ]),
+            implode(" ", [
+                $this->out ? $this->date->format("Y-m-d") : date("Y-m-d"),
+                $this->out ? $this->out->format("H:i:s") : date("H:i:s"),
+            ]),
+        ];
     }
 
-    protected $casts = [
-        'date' => 'date',
-        'in' => 'datetime',
-        'out' => 'datetime',
-    ];
+    public function getDurationAttribute(){
+        list($in, $out) = $this->getInOutDateTimeAttribute();
+
+        $waktuMulaiObj = Carbon::parse($in);
+        $waktuSelesaiObj = Carbon::parse($out);
+        $durasi = $waktuMulaiObj->diff($waktuSelesaiObj);
+
+        $jam = $durasi->days * 24 + $durasi->h;
+        $menit = $durasi->i;
+
+        return "$jam jam $menit menit";
+    }
 }
