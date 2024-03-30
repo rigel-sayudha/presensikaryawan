@@ -15,7 +15,11 @@ class Index extends Component
     public function render()
     {
         return view('livewire.pages.office.index', [
-            'datas' => OfficeMap::get()
+            'datas' => OfficeMap::when($this->search, function($q){
+                $q->where('name', 'like', "%{$this->search}%")
+                ->orWhere('building', 'like', "%{$this->search}%")
+                ->orWhere('desc', 'like', "%{$this->search}%");
+            })->get()
         ]);
     }
 }
