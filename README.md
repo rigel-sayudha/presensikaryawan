@@ -24,7 +24,7 @@
 -   run : `php artisan serve`
 -   run : `pnpm dev`
 -   buka `http://127.0.0.1:8000` di browser (sesuaikan port)
--   login dengan email `admin@absensimagang.com` dan password `admin123`
+-   login dengan email `admin@presensi.com` dan password `admin123`
 
 ---
 
