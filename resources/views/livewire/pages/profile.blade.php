@@ -34,15 +34,15 @@
             </label>
             <label class="input input-bordered flex gap-2 items-center @error('form.password') input-error @enderror">
                 <x-tabler-key class="icon-5" />
-                <input type="text" wire:model="form.password" placeholder="password" class="grow">
+                <input type="password" wire:model="form.password" placeholder="password" class="grow">
             </label>
-            <label class="input input-bordered flex gap-2 items-center @error('form.school') input-error @enderror">
+            <label class="input input-bordered flex gap-2 items-center @error('form.alamat') input-error @enderror">
                 <x-tabler-building class="icon-5" />
-                <input type="text" wire:model="form.school" placeholder="school" class="grow">
+                <input type="text" wire:model="form.alamat" placeholder="alamat" class="grow">
             </label>
             <label class="input input-bordered flex gap-2 items-center @error('form.nis') input-error @enderror">
                 <x-tabler-user class="icon-5" />
-                <input type="text" wire:model="form.nis" placeholder="nis" class="grow">
+                <input type="text" wire:model="form.nik" placeholder="Nomor Induk Kepegawaian" class="grow">
             </label>
             <label class="input input-bordered flex gap-2 items-center @error('form.phone') input-error @enderror">
                 <x-tabler-phone class="icon-5" />

@@ -10,7 +10,7 @@
                     </div>
                 </div>
                 <div class="grid md:grid-cols-2 xl:grid-cols-3 flex-1">
-                    @foreach (['name', 'email', 'school', 'phone', 'nis'] as $key)
+                    @foreach (['name', 'email', 'alamat', 'phone', 'nik'] as $key)
                         <div class="flex flex-col p-2 hover:bg-base-200">
                             <span class="text-xs capitalize opacity-50">{{ $key }}</span>
                             <div>{{ $user->$key }}</div>
@@ -34,11 +34,11 @@
     </div>
 
     <div class="flex justify-between items-center">
-        <div class="font-semibold">Riwayat absensi</div>
-        <button class="btn btn-primary btn-sm">
+        <div class="font-semibold">Riwayat Presensi</div>
+        <a href="{{ route('user.rekap-pdf', $user->id) }}" class="btn btn-primary btn-sm">
             <x-tabler-download class="icon-4" />
             <span>Download rekap</span>
-        </button>
+        </a>
     </div>
 
     <div class="table-wrapper">
@@ -46,8 +46,9 @@
             <thead>
                 <th>No</th>
                 <th>Tanggal</th>
-                <th>Masuk - Keluar</th>
+                <!-- <th>Masuk - Keluar</th> -->
                 <th>Durasi</th>
+                <th>Status</th>
                 <th>Catatan</th>
             </thead>
             <tbody>
@@ -55,8 +56,9 @@
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ date('d M Y', strtotime($att->date)) }}</td>
-                        <td>{{ $att->range_time }}</td>
+                        <!-- <td>{{ $att->range_time }}</td> -->
                         <td>{{ $att->duration }}</td>
+                        <td>{{ $att->status}}</td>
                         <td class="whitespace-normal">
                             <div class="line-clamp-1">
                                 {{ $att->note }}

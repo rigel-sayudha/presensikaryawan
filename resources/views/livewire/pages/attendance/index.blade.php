@@ -9,13 +9,14 @@
         <table class="table">
             <thead>
                 <th>No</th>
-                <th>Nama siswa</th>
+                <th>Nama</th>
                 <th>Tanggal</th>
                 <th>Masuk</th>
                 <th>Keluar</th>
                 @can('attendance.approve')
                     <th class="text-center">Approved</th>
                 @endcan
+                <th>Lokasi</th>
                 @if ($withActions)
                     <th class="text-center">Action</th>
                 @endif
@@ -38,6 +39,7 @@
                                 <x-tabler-clock class="icon-4 text-warning" />
                             @endif
                         </td>
+                        
                         @can('attendance.approve')
                             <td>
                                 <div class="flex items-center justify-center">
@@ -46,6 +48,7 @@
                                         wire:change="$dispatch('approveAttendance', {attendance : {{ $data->id }}})">
                                 </div>
                             </td>
+                            <td>{{$data->status}}</td>
                         @endcan
                         @if ($withActions)
                             <td>

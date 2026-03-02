@@ -25,49 +25,80 @@ class Attendance extends Model
         'out' => 'datetime',
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function getRangeTimeAttribute(){
-        return implode(' - ', [
-            date('H:i', strtotime($this->in)),
-            $this->out ? date('H:i', strtotime($this->out)) : "--:--",
-        ]);
-    }
-
-    public function getStatusTextAttribute(){
-        if ($this->out == null) {
-            return "Absensi keluar";
+    public function getTotalHours()
+    {
+        if (!$this->in || !$this->out) {
+            return 0;
         }
-        else {
-            return "Absensi selesai";
+
+        return Carbon::parse($this->in)->diffInHours(Carbon::parse($this->out));
+    }
+
+    public function getDurationAttribute()
+    {
+        if ($this->in && $this->out) {
+            $startTime = $this->in;
+            $endTime = $this->out;
+            return $endTime->diffInHours($startTime) . ' jam ' . $endTime->diffInMinutes($startTime) % 60 . ' menit';
         }
+        return '0 jam 0 menit';
     }
 
-    public function getInOutDateTimeAttribute(){
-        return [
-            implode(" ", [
-                $this->date->format("Y-m-d"),
-                $this->in->format("H:i:s"),
-            ]),
-            implode(" ", [
-                $this->out ? $this->date->format("Y-m-d") : date("Y-m-d"),
-                $this->out ? $this->out->format("H:i:s") : date("H:i:s"),
-            ]),
-        ];
+    public function calculateLate()
+    {
+        if (!$this->in) {
+            return 0;
+        }
+
+        $expectedStart = Carbon::parse($this->date->format('Y-m-d') . ' 08:00:00');
+        $actualStart = Carbon::parse($this->in);
+
+        return $actualStart->greaterThan($expectedStart) ? $actualStart->diffInMinutes($expectedStart) : 0;
     }
 
-    public function getDurationAttribute(){
-        list($in, $out) = $this->getInOutDateTimeAttribute();
+    public function calculateOvertime()
+    {
+        if (!$this->out) {
+            return 0;
+        }
 
-        $waktuMulaiObj = Carbon::parse($in);
-        $waktuSelesaiObj = Carbon::parse($out);
-        $durasi = $waktuMulaiObj->diff($waktuSelesaiObj);
+        $expectedEnd = Carbon::parse($this->date->format('Y-m-d') . ' 16:00:00');
+        $actualEnd = Carbon::parse($this->out);
 
-        $jam = $durasi->days * 24 + $durasi->h;
-        $menit = $durasi->i;
-
-        return "$jam jam $menit menit";
+        return $actualEnd->greaterThan($expectedEnd) ? $actualEnd->diffInMinutes($expectedEnd) : 0;
     }
+
+    public function calculateOvertimeBonus()
+    {
+        return floor($this->calculateOvertime() / 60) * 50000;
+    }
+
+    public function calculateLatePenalty()
+    {
+        $lateMinutes = $this->calculateLate();
+        $lateHours = ceil($lateMinutes / 60); 
+        return $lateHours * 5000;
+    }
+
+    function calculateDistance($lat1, $lon1, $lat2, $lon2)
+    {
+        $earthRadius = 6371000; 
+
+        $latDelta = deg2rad($lat2 - $lat1);
+        $lonDelta = deg2rad($lon2 - $lon1);
+
+        $a = sin($latDelta / 2) * sin($latDelta / 2) +
+            cos(deg2rad($lat1)) * cos(deg2rad($lat2)) *
+            sin($lonDelta / 2) * sin($lonDelta / 2);
+
+        $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+
+        return $earthRadius * $c;
+    }
+
 }

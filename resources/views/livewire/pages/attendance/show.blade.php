@@ -12,7 +12,7 @@
                             <div>{{ date('d M Y', strtotime($attendance->date)) }}</div>
                         </div>
                         <div class="flex flex-col p-2">
-                            <span class="text-xs capitalize opacity-50">Durasi absensi</span>
+                            <span class="text-xs capitalize opacity-50">Durasi kehadiran</span>
                             <div>{{ $attendance->duration ?? '-' }}</div>
                         </div>
                         <div class="flex flex-col p-2">
@@ -26,6 +26,10 @@
                         <div class="flex flex-col p-2 col-span-full">
                             <span class="text-xs capitalize opacity-50">Catatan</span>
                             <div>{{ $attendance->note ?? '-' }}</div>
+                        </div>
+                        <div class="flex flex-col p-2 col-span-full">
+                            <span class="text-xs capitalize opacity-50">Lokasi</span>
+                            <div>{{ $attendance->status ?? '-' }}</div>
                         </div>
                     </div>
                 </div>

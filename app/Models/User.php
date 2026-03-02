@@ -23,8 +23,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'school',
-        'nis',
+        'alamat',
+        'nik',
         'phone',
         'photo',
         'active',
@@ -50,7 +50,7 @@ class User extends Authenticatable
     ];
 
     public function getRedirectToAttribute(){
-        if ($this->hasRole('siswa')) {
+        if ($this->hasRole('karyawan')) {
             return route('home');
         }
         else{

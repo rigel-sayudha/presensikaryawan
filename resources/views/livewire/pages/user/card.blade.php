@@ -10,8 +10,8 @@
             </div>
             <div class="flex flex-col">
                 <div class="font-semibold text-lg">{{ $user->name }}</div>
-                <div class="text-xs opacity-75">{{ $user->school }}</div>
-                <div class="text-xs opacity-75">{{ $user->nis }}</div>
+                <div class="text-xs opacity-75">{{ $user->alamat }}</div>
+                <div class="text-xs opacity-75">{{ $user->nik }}</div>
             </div>
         </div>
     </div>

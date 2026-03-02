@@ -8,9 +8,10 @@
                 <tr>
                     <th>No</th>
                     <th>Tanggal</th>
-                    <th>Masuk - keluar</th>
+                    <!-- <th>Masuk - keluar</th> -->
                     <th>Durasi</th>
                     <th>Catatan</th>
+                    <th>Lokasi</th>
                     <th class="text-center">Status</th>
                 </tr>
             </thead>
@@ -19,7 +20,7 @@
                     <tr>
                         <td>{{ $no++ }}</td>
                         <td>{{ $data->date->format('d F Y') }}</td>
-                        <td>{{ $data->range_time }}</td>
+                        <!-- <td>{{ $data->range_time }}</td> -->
                         <td>{{ $data->duration }}</td>
                         <td>
                             <div class="hidden lg:flex line-clamp-1">{{ Str::limit($data->note, 40) }}</div>
@@ -30,6 +31,7 @@
                                 </button>
                             </div>
                         </td>
+                        <td>{{$data->status}}</td>
                         <td class="text-center">{{ $data->approved ? 'Disetujui' : '-' }}</td>
                     </tr>
                 @endforeach

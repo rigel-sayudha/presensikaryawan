@@ -1,4 +1,4 @@
-<form class="card-body space-y-3" wire:submit="login">
+<form class="card-body space-y-3" wire:submit.prevent="login">
     <div class="flex flex-col gap-2">
         <label for="" class="input input-bordered flex items-center gap-2 @error('email') input-error @enderror">
             <x-tabler-at class="icon-5" />

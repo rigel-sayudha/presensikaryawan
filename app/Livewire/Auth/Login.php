@@ -15,7 +15,7 @@ class Login extends Component
 
     public function login(){
         $valid = $this->validate([
-            'email' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
 

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
 
-            $table->string('school')->nullable();
-            $table->string('nis')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('nik')->nullable();
             $table->string('phone')->nullable();
             $table->string('photo')->nullable();
             $table->boolean('active')->default(true);

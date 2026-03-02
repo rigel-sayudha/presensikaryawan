@@ -13,15 +13,18 @@ class Mine extends Component
 
     public function render()
     {
-        $datas = Attendance::where('user_id', auth()->user()->id)
-        ->when($this->date, function($q) {
-            $q->whereDate('date', $this->date);
-        })
-        ->orderBy('date')
-        ->get();
-
+        $datas = Attendance::with('user')
+            ->where('user_id', auth()->user()->id)
+            ->when($this->date, function($q) {
+                $q->whereDate('date', $this->date);
+            })
+            ->orderBy('date')
+            ->get();
+    
         return view('livewire.pages.attendance.mine', [
             'datas' => $datas
         ]);
     }
+    
+    
 }

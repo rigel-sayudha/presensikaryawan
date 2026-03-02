@@ -13,7 +13,7 @@ class CountAttendance extends Component
     public function render()
     {
         $attendanceCount = Attendance::where('date', date('Y-m-d'))->count();
-        $userCount = User::where('active', true)->role('siswa')->count();
+        $userCount = User::where('active', true)->role('karyawan')->count();
 
         $percentage = $attendanceCount ? ($attendanceCount / $userCount) * 100 : 0;
 

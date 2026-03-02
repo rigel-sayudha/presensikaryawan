@@ -15,18 +15,26 @@
                     <li>
                         <a href="{{ route('attendance.mine') }}" @class(['active' => Route::is('attendance.mine')]) wire:navigate>
                             <x-tabler-list class="icon-5" />
-                            <span>Riwayat Absensi</span>
+                            <span>Riwayat Presensi</span>
                         </a>
                     </li>
                 @endcan
-                @can('office.search')
+                @can('attendance.report')
+                    <li>
+                        <a href="{{ route('attendance.report') }}" @class(['active' => Route::is('attendance.report')]) wire:navigate>
+                            <x-tabler-report class="icon-5" />
+                            <span>Data Laporan</span>
+                        </a>
+                    </li>
+                @endcan
+                <!-- @can('office.search')
                     <li>
                         <a href="{{ route('office.search') }}" @class(['active' => Route::is('office.search')]) wire:navigate>
                             <x-tabler-map class="icon-5" />
                             <span>Map Gedung</span>
                         </a>
                     </li>
-                @endcan
+                @endcan -->
             </ul>
         </li>
     @endcanany
@@ -46,7 +54,7 @@
                     <li>
                         <a href="{{ route('attendance.index') }}" @class(['active' => Route::is('attendance.index')]) wire:navigate>
                             <x-tabler-list class="icon-5" />
-                            <span>Absensi PKL</span>
+                            <span>Presensi Karyawan</span>
                         </a>
                     </li>
                 @endcan
@@ -58,14 +66,14 @@
                         </a>
                     </li>
                 @endcan
-                @can('office.index')
+                <!-- @can('office.index')
                     <li>
                         <a href="{{ route('office.index') }}" @class(['active' => Route::is(['office.index'])]) wire:navigate>
                             <x-tabler-map class="icon-5" />
                             <span>Map Gedung</span>
                         </a>
                     </li>
-                @endcan
+                @endcan -->
                 @can('setting.registration-code')
                     <li>
                         <a href="{{ route('setting.registration-code') }}" @class(['active' => Route::is('setting.registration-code')]) wire:navigate>
@@ -96,14 +104,14 @@
                     </a>
                 </li>
             @endcan
-            @can('documentation')
+            <!-- @can('documentation')
                 <li>
                     <a href="{{ route('dokumentasi') }}" @class(['active' => Route::is('dokumentasi')]) wire:navigate>
                         <x-tabler-book class="icon-5" />
                         <span>Dokumentasi</span>
                     </a>
                 </li>
-            @endcan
+            @endcan -->
             <li>
                 <button wire:click="logout">
                     <x-tabler-logout class="icon-5" />

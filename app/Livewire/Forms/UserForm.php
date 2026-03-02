@@ -15,8 +15,8 @@ class UserForm extends Form
     public $name;
     public $email;
     public $password;
-    public $school;
-    public $nis;
+    public $alamat;
+    public $nik;
     public $phone;
 
     #[Validate('max:2048', message:"Ukuran :attribute terlalu besar")]
@@ -28,8 +28,8 @@ class UserForm extends Form
 
         $this->name = $user->name;
         $this->email = $user->email;
-        $this->school = $user->school;
-        $this->nis = $user->nis;
+        $this->alamat = $user->alamat;
+        $this->nik = $user->nik;
         $this->phone = $user->phone;
 
         $this->role = $user->getRoleNames()->first();
@@ -40,8 +40,8 @@ class UserForm extends Form
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'school' => 'required',
-            'nis' => 'required',
+            'alamat' => 'required',
+            'nik' => 'required',
             'phone' => 'required',
             'role' => 'required',
         ]);
@@ -63,8 +63,8 @@ class UserForm extends Form
             'user' => 'required',
             'name' => 'required',
             'email' => 'required',
-            'school' => 'required',
-            'nis' => 'required',
+            'alamat' => 'required',
+            'nik' => 'required',
             'phone' => 'required',
             'role' => 'required',
         ]);

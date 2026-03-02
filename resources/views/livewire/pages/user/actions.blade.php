@@ -1,7 +1,7 @@
 <div>
     <input type="checkbox" id="modalUser" class="modal-toggle" wire:model="show" />
     <div class="modal" role="dialog">
-        <form class="modal-box max-w-2xl" wire:submit="simpan">
+        <form class="modal-box" wire:submit="simpan">
             <h3 class="font-bold text-lg">Data user</h3>
             <div class="py-4 space-y-1">
                 <div class="form-control grid grid-cols-3">
@@ -29,17 +29,17 @@
                 @endif
                 <div class="form-control grid grid-cols-3">
                     <label for="" class="label">
-                        <span class="label-text">Nama sekolah</span>
+                        <span class="label-text">Alamat</span>
                     </label>
-                    <input type="text" wire:model="form.school" placeholder="school"
-                        class="col-span-2 input input-bordered flex gap-2 items-center @error('form.school') input-error @enderror">
+                    <input type="text" wire:model="form.alamat" placeholder="alamat"
+                        class="col-span-2 input input-bordered flex gap-2 items-center @error('form.alamat') input-error @enderror">
                 </div>
                 <div class="form-control grid grid-cols-3">
                     <label for="" class="label">
-                        <span class="label-text">Nomor induk siswa</span>
+                        <span class="label-text">Nomor Induk Karyawan</span>
                     </label>
-                    <input type="text" wire:model="form.nis" placeholder="nis"
-                        class="col-span-2 input input-bordered flex gap-2 items-center @error('form.nis') input-error @enderror">
+                    <input type="text" wire:model="form.nik" placeholder="nik"
+                        class="col-span-2 input input-bordered flex gap-2 items-center @error('form.nik') input-error @enderror">
                 </div>
                 <div class="form-control grid grid-cols-3">
                     <label for="" class="label">

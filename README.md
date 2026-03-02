@@ -1,5 +1,7 @@
 # Presensi Karyawan
 
+![Web Capture](public/capture.png)
+
 ## Instalasi
 
 ### Requirements
@@ -91,4 +93,3 @@
 
 -   run : `git fetch origin main`
 -   run : `git merge origin/main`
-# presensikaryawan
